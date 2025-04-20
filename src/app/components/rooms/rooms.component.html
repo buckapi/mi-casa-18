@@ -23,17 +23,20 @@
                                                 </a>
                                             </div>
                                             <div class="tourmaster-room-content-wrap gdlr-core-skin-e-background gdlr-core-js" data-sync-height="room-item-16" style="padding-right: 30px;">
-                                                <h3 class="tourmaster-room-title gdlr-core-skin-title" style="text-transform: none; display: flex; align-items: center; justify-content: space-between;">
-                                                    <a href="single-room.html" style="display: inline-block;">{{room.number}}</a>
+                                                <h3 (click)="goToRoomDetail(room)" class="tourmaster-room-title gdlr-core-skin-title" style="text-transform: none; display: flex; align-items: center; justify-content: space-between; cursor: pointer;">
+                                                    <a style="display: inline-block; cursor: pointer;"  (click)="goToRoomDetail(room)">{{room.number}} </a>
                                                     <div class="tourmaster-info tourmaster-info-guest-amount" style="display: inline-block;">
+                                                        <span style="font-size: 24px;">
+                                                            máx                                                        </span>
+                                                        <span class="tourmaster-tail" style="margin-right: px; font-size: 24px; cursor: pointer;"  (click)="goToRoomDetail(room)" style="cursor: pointer;"> {{room.capacity | number: '1.0-0'}} </span>
                                                         <i class="gdlr-icon-group"></i>
-                                                        <span class="tourmaster-tail">{{room.capacity}}</span>
+                                                 
                                                     </div>
                                                 </h3>
                                                 <div class="tourmaster-info-wrap clearfix">
                                                     <div class="tourmaster-info tourmaster-info-bed-type" *ngFor="let bed of room.beds">
                                                         <i class="gdlr-icon-double-bed2"></i>
-                                                            <span class="tourmaster-tail">{{bed.quantity}} {{bed.type}}</span>
+                                                            <span class="tourmaster-tail"  (click)="goToRoomDetail(room)" style="cursor: pointer;">{{bed.quantity}} {{bed.type}}</span>
                                                     </div>
                                                 </div>
                                                 <!-- <div class="tourmaster-room-rating">
@@ -41,7 +44,11 @@
                                                     <span class="tourmaster-room-rating-text">1 Review</span>
                                                 </div> -->
                                                 <div class="tourmaster-bottom clearfix">
-                                                    <div class="tourmaster-price-wrap tourmaster-no-bg"><span class="tourmaster-head">Precio</span><span class="tourmaster-price">COLP {{room.price | number: '1.0-0'}}</span></div>
+                                                    <div class="tourmaster-price-wrap tourmaster-no-bg"><span class="tourmaster-head"></span><span class="tourmaster-price"  (click)="goToRoomDetail(room)" style="cursor: pointer;"    > {{room.price | number: '1.0-0'}} 
+                                                    <span style="font-size: 20px;">
+                                                        COP$
+                                                    </span>    
+                                                    </span></div>
                                                     <a class="tourmaster-read-more tourmaster-type-button" style="cursor: pointer;">Reservar</a>
                                                 </div>
                                             </div>

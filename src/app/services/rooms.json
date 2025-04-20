@@ -9,6 +9,7 @@
         "beds": [
           { "type": "doble", "quantity": 1 }
         ],
+        "capacity": 2,
         "description": ""
       },
       {
@@ -21,6 +22,7 @@
           { "type": "doble", "quantity": 1 },
           { "type": "sencilla", "quantity": 1 }
         ],
+        "capacity": 2,
         "description": ""
       },
       {
@@ -33,6 +35,7 @@
           { "type": "doble", "quantity": 2 },
           { "type": "sencilla", "quantity": 1 }
         ],
+        "capacity": 3,
         "description": ""
       }
     ]

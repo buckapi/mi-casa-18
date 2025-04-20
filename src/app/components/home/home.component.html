@@ -2,11 +2,11 @@
     <div class="gdlr-core-page-builder-body">
         <div class="gdlr-core-pbf-wrapper" style="padding: 0px 0px 0px 0px;">
             <div class="gdlr-core-pbf-background-wrap">
-                <div
+                <!-- <div
                     class="gdlr-core-pbf-background gdlr-core-parallax gdlr-core-js"
                     style="background-image: url(upload/apartment-2-hero-bg.png); background-repeat: repeat; background-position: top center;"
                     data-parallax-speed="0"
-                ></div>
+                ></div> -->
             </div>
             <div class="gdlr-core-pbf-wrapper-content gdlr-core-js">
                 <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container">
@@ -315,9 +315,9 @@
                             <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js">
                                 <div class="gdlr-core-pbf-element">
                                     <div class="gdlr-core-button-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-center-align">
-                                        <a
+                                        <a (click)="globalService.activeRoute='rooms'"
                                             class="gdlr-core-button gdlr-core-button-transparent gdlr-core-center-align gdlr-core-button-with-border"
-                                            href="https://max-themes.net/hotale/apartment2/room-search/?room_amount=1&amp;room-search="
+                                          
                                             style="
                                                 font-style: normal;
                                                 font-weight: 600;
@@ -327,6 +327,7 @@
                                                 -moz-border-radius: 5px;
                                                 -webkit-border-radius: 5px;
                                                 border-color: #94959b;
+                                                cursor: pointer;
                                             "
                                         >
                                             <span class="gdlr-core-content">Ver todas</span>

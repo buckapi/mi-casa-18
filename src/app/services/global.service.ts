@@ -11,6 +11,7 @@ import { HostelService } from './hostel.service';
 })
 export class GlobalService {
   searchTerm: string = "";
+  selectedRoom: Room | null = null;
   room: Room | null = null;
   activeRoute: string = "home";
   dashboardOption: string = "";

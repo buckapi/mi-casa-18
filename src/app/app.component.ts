@@ -8,17 +8,19 @@ import 'jquery-ui-dist/jquery-ui';
 import { GlobalService } from './services/global.service';
 import { RoomsComponent } from './components/rooms/rooms.component';
 import { AboutComponent } from './components/about/about.component';
+import { RoomDetailComponent } from "./components/room-detail/room-detail.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    HomeComponent, 
+    HomeComponent,
     CommonModule,
     HttpClientModule,
     RoomsComponent,
-    AboutComponent
-  ],
+    AboutComponent,
+    RoomDetailComponent
+],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

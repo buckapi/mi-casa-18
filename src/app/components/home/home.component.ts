@@ -12,7 +12,7 @@ import { GlobalService } from '../../services/global.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent {
   rooms: Room[] = [];
   private roomsSubscription?: Subscription;
   loading = true;
@@ -22,17 +22,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     public roomsService: RoomService
   ) {}
 
-  async ngOnInit(): Promise<void> {
-    try {
-      const rooms = await this.roomsService.getRooms();
-      this.rooms = rooms;
-      console.log('Rooms loaded:', this.rooms);
-    } catch (error) {
-      console.error('Error loading rooms:', error);
-    } finally {
-      this.loading = false;
-    }
-  }
+
 
   ngOnDestroy(): void {
     this.roomsSubscription?.unsubscribe();

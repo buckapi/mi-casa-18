@@ -53,6 +53,65 @@ export const ROOM_TYPES = {
       id: "a6dknr5mjqszwvy",
       name: "Duchas múltiples",
       icon: "shower"
+    },
+    SAFE: {
+      id: "a7sfnr9nmcqzhbq",
+      name: "Caja fuerte",
+      icon: "safe-box1"
+    },
+    NO_SMOKING: {
+      id: "a8mgnr7plbqxwvz",
+      name: "No fumar",
+      icon: "smoke_free"
+    },
+    HEATING: {
+      id: "a9tqzn2sfncmhbq",
+      name: "Calefacción",
+      icon: "oil-heater-1"
+    },
+    PHONE: {
+      id: "a10dknr5mjqszwvz",
+      name: "Teléfono",
+      icon: "telephone"
+    },
+    HAIR_DRYER: {
+      id: "a11sfnr9nmcqzhbr",
+      name: "Secador de pelo",
+      icon: "hair-dryer1"
+    }
+  } as const;
+  
+  /* Servicios del hotel */
+  export const HOTEL_AMENITIES = {
+    GYM: {
+      id: "h6sfnr9nmcqzhbq",
+      name: "Gimnasio",
+      icon: "weights"
+    },
+    PARKING: {
+      id: "h7mgnr7plbqxwvz",
+      name: "Estacionamiento",
+      icon: "parking"
+    },
+    SPA: {
+      id: "h8tqzn2sfncmhbq",
+      name: "Spa",
+      icon: "massage"
+    },
+    RESTAURANT: {
+      id: "h9dknr5mjqszwvz",
+      name: "Restaurante",
+      icon: "dish"
+    },
+    ROOM_SERVICE: {
+      id: "h10sfnr9nmcqzhbr",
+      name: "Servicio a la habitación",
+      icon: "food-service-copy"
+    },
+    POOL: {
+      id: "h11mgnr7plbqxwva",
+      name: "Piscina",
+      icon: "swimming-pool1"
     }
   } as const;
   
@@ -70,3 +129,4 @@ export const ROOM_TYPES = {
   /* Tipos para TypeScript (derivados de las constantes) */
   export type RoomType = typeof ROOM_TYPES[keyof typeof ROOM_TYPES];
   export type AmenityType = typeof ROOM_AMENITIES[keyof typeof ROOM_AMENITIES];
+  export type HotelAmenityType = typeof HOTEL_AMENITIES[keyof typeof HOTEL_AMENITIES];
