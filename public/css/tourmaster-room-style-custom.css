@@ -26,7 +26,7 @@ body input[type="submit"].tourmaster-room-button{ color: #0c0c0c; border-color: 
 .single-room .tourmaster-single-review-head, .single-room .tourmaster-single-review-content .tourmaster-single-review-user-name{ color: #000000; } .single-room .tourmaster-single-review-head .tourmaster-room-rating i, .single-room .tourmaster-single-review-content .tourmaster-single-review-detail-rating i, .single-room .tourmaster-single-review-content .tourmaster-single-review-detail-date{ color: #000000; } 
 .tourmaster-room-navigation-checkout-wrap .tourmaster-room-navigation-checkout-button, .tourmaster-room-navigation-checkout-wrap .tourmaster-room-navigation-checkout-button:hover{ border-color: #1e1e1e; color: #1e1e1e; } 
 .tourmaster-room-navigation-checkout-wrap.tourmaster-active .tourmaster-room-navigation-checkout-button{ color: #ffffff; } 
-.tourmaster-room-navigation-checkout-wrap.tourmaster-active .tourmaster-room-navigation-checkout-button{ border-color: #ff4f60; background: #ff4f60; } 
+.tourmaster-room-navigation-checkout-wrap.tourmaster-active .tourmaster-room-navigation-checkout-button{ border-color: #74c586; background: #74c586; } 
 .tourmaster-room-navigation-checkout-button .tourmaster-count{ background: #dedede; } 
 .tourmaster-room-navigation-checkout-button .tourmaster-count{ color: #000; } 
 .tourmaster-room-cart-items{ background-color: #ffffff; } 

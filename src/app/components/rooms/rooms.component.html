@@ -7,11 +7,15 @@
                     <div class="gdlr-core-pbf-element">
                         <div class="tourmaster-room-item clearfix tourmaster-room-item-style-grid2">
                             <div class="tourmaster-room-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
-                                <div class="gdlr-core-item-list tourmaster-item-pdlr tourmaster-column-20 tourmaster-column-first" *ngFor="let room of rooms">
+                                <div class="gdlr-core-item-list tourmaster-item-pdlr tourmaster-column-20 " *ngFor="let room of rooms">
                                     <div class="tourmaster-room-grid2 tourmaster-grid-frame" style="margin-bottom: 40px;">
                                         <div
                                             class="tourmaster-room-grid-inner"
-                                            style="box-shadow: 0px 20px 35px rgba(10, 10, 10, 0.06); -moz-box-shadow: 0px 20px 35px rgba(10, 10, 10, 0.06); -webkit-box-shadow: 0px 20px 35px rgba(10, 10, 10, 0.06);"
+                                            style="box-shadow: 0px 20px 35px rgba(10, 10, 10, 0.06); -moz-box-shadow: 0px 20px 35px rgba(10, 10, 10, 0.06); -webkit-box-shadow: 0px 20px 35px rgba(10, 10, 10, 0.06);
+                                            border-radius: 20px 20px 20px 20px;
+                                            -moz-border-radius: 20px 20px 20px 20px;
+                                            -webkit-border-radius: 20px 20px 20px 20px;
+                                            "
                                         >
                                             <div class="tourmaster-room-thumbnail tourmaster-media-image gdlr-core-outer-frame-element">
                                                 <a href="single-room.html">
@@ -19,20 +23,26 @@
                                                 </a>
                                             </div>
                                             <div class="tourmaster-room-content-wrap gdlr-core-skin-e-background gdlr-core-js" data-sync-height="room-item-16" style="padding-right: 30px;">
-                                                <h3 class="tourmaster-room-title gdlr-core-skin-title" style="text-transform: none;">
-                                                    <a href="single-room.html">Luxury Suite</a>
+                                                <h3 class="tourmaster-room-title gdlr-core-skin-title" style="text-transform: none; display: flex; align-items: center; justify-content: space-between;">
+                                                    <a href="single-room.html" style="display: inline-block;">{{room.number}}</a>
+                                                    <div class="tourmaster-info tourmaster-info-guest-amount" style="display: inline-block;">
+                                                        <i class="gdlr-icon-group"></i>
+                                                        <span class="tourmaster-tail">{{room.capacity}}</span>
+                                                    </div>
                                                 </h3>
                                                 <div class="tourmaster-info-wrap clearfix">
-                                                    <div class="tourmaster-info tourmaster-info-bed-type"><i class="gdlr-icon-double-bed2"></i><span class="tourmaster-tail">1 King Bed</span></div>
-                                                    <div class="tourmaster-info tourmaster-info-guest-amount"><i class="gdlr-icon-group"></i><span class="tourmaster-tail">4 Guests</span></div>
+                                                    <div class="tourmaster-info tourmaster-info-bed-type" *ngFor="let bed of room.beds">
+                                                        <i class="gdlr-icon-double-bed2"></i>
+                                                            <span class="tourmaster-tail">{{bed.quantity}} {{bed.type}}</span>
+                                                    </div>
                                                 </div>
-                                                <div class="tourmaster-room-rating">
+                                                <!-- <div class="tourmaster-room-rating">
                                                     <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
                                                     <span class="tourmaster-room-rating-text">1 Review</span>
-                                                </div>
+                                                </div> -->
                                                 <div class="tourmaster-bottom clearfix">
-                                                    <div class="tourmaster-price-wrap tourmaster-no-bg"><span class="tourmaster-head">From</span><span class="tourmaster-price">$90</span></div>
-                                                    <a class="tourmaster-read-more tourmaster-type-button" href="single-room.html">Book Now</a>
+                                                    <div class="tourmaster-price-wrap tourmaster-no-bg"><span class="tourmaster-head">Precio</span><span class="tourmaster-price">COLP {{room.price | number: '1.0-0'}}</span></div>
+                                                    <a class="tourmaster-read-more tourmaster-type-button" style="cursor: pointer;">Reservar</a>
                                                 </div>
                                             </div>
                                         </div>

@@ -1,0 +1,12 @@
+.tourmaster-read-more:hover {
+    background-color: #74c586 !important;
+    color: white !important;
+}
+
+.tourmaster-room-grid2 {
+    transition: transform 0.3s ease;
+}
+
+.tourmaster-room-grid2:hover {
+    transform: translateY(-10px);
+}
