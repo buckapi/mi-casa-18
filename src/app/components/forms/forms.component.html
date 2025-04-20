@@ -1,0 +1,210 @@
+<div class="gdlr-core-pbf-sidebar-right gdlr-core-column-extend-right hotale-sidebar-area gdlr-core-column-15 gdlr-core-pbf-sidebar-padding gdlr-core-line-height">
+    <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
+        <div class="tourmaster-room-booking-bar-wrap">
+            <div class="tourmaster-room-booking-bar-title"><span class="tourmaster-active" [ngClass]="{ 'tourmaster-active': formType === 'booking' }" (click)="setFormType('booking')">Reserva tu habitacion</span><span [ngClass]="{ 'tourmaster-active': formType === 'enquiry' }" (click)="setFormType('enquiry')">Consulta</span></div>
+            <div class="tourmaster-room-booking-bar-content" hidden="formType != 'booking'">
+                <div class="tourmaster-room-booking-wrap" hidden="formType != 'booking'">
+                    <form
+                        class="tourmaster-room-booking-form clearfix"
+                        id="tourmaster-room-booking-form"
+                        action="single-room.html#"
+                        data-action="tourmaster_room_booking_form"
+                        method="POST"
+                    >
+                        <div
+                            class="tourmaster-room-date-selection tourmaster-vertical"
+                        >
+                            <div class="tourmaster-custom-start-date gdlr-core-skin-e-background">
+                                <div class="tourmaster-head gdlr-core-skin-e-content">Entrada</div>
+                                <div class="tourmaster-tail gdlr-core-skin-e-content">Jul 28, 2022</div>
+                                <input type="hidden" name="start_date" value="2022-07-28" />
+                            </div>
+                            <div class="tourmaster-custom-end-date gdlr-core-skin-e-background">
+                                <div class="tourmaster-head gdlr-core-skin-e-content">Salida</div>
+                                <div class="tourmaster-tail gdlr-core-skin-e-content">Jul 29, 2022</div>
+                                <input type="hidden" name="end_date" value="2022-07-29" />
+                            </div>
+                            <div class="tourmaster-custom-datepicker-wrap" data-date-format="d M yy">
+                                <i class="tourmaster-custom-datepicker-close icon_close"></i>
+                                <div class="tourmaster-custom-datepicker-title"></div>
+                                <div class="tourmaster-custom-datepicker-calendar"></div>
+                            </div>
+                        </div>
+                        <div class="tourmaster-room-amount-selection">
+                      
+                        </div>
+                        <div class="tourmaster-room-booking-guest-selection tourmaster-one">
+                            <div class="tourmaster-room-amount-selection">
+                                <div class="tourmaster-custom-amount-display gdlr-core-skin-e-background">
+                                    <div class="tourmaster-head gdlr-core-skin-e-content">
+                                        <span>Room<span class="tourmaster-number">1</span> : </span>Huespedes
+                                    </div>
+                                    <div class="tourmaster-tail gdlr-core-skin-e-content"><span class="tourmaster-space"></span>Adults 2<span class="tourmaster-space"></span>Children 0</div>
+                                </div>
+                                <div class="tourmaster-custom-amount-selection-wrap">
+                                    <div class="tourmaster-custom-amount-selection-item clearfix" data-label="Adults">
+                                        <div class="tourmaster-head">Adultos</div>
+                                        <div class="tourmaster-tail">
+                                            <span class="tourmaster-minus"><i class="icon_minus-06"></i></span><span class="tourmaster-amount">2</span>
+                                            <span class="tourmaster-plus"><i class="icon_plus"></i></span>
+                                        </div>
+                                        <input type="hidden" name="adult[]" value="2" />
+                                    </div>
+                                    <div class="tourmaster-custom-amount-selection-item clearfix" data-label="Children">
+                                        <div class="tourmaster-head">Niños</div>
+                                        <div class="tourmaster-tail">
+                                            <span class="tourmaster-minus"><i class="icon_minus-06"></i></span><span class="tourmaster-amount">0</span>
+                                            <span class="tourmaster-plus"><i class="icon_plus"></i></span>
+                                        </div>
+                                        <input type="hidden" name="children[]" value="0" />
+                                    </div>
+                                    <div class="tourmaster-custom-amount-selection-item clearfix" data-label="Mascotas">
+                                        <div class="tourmaster-head">Mascotas</div>
+                                        <div class="tourmaster-tail">
+                                            <span class="tourmaster-minus"><i class="icon_minus-06"></i></span><span class="tourmaster-amount">0</span>
+                                            <span class="tourmaster-plus"><i class="icon_plus"></i></span>
+                                        </div>
+                                        <input type="hidden" name="children[]" value="0" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="room_id" value="15031" /><input type="hidden" name="post_type" value="room" />
+                        <input type="submit" class="tourmaster-room-button tourmaster-full" value="Book Now" />
+                    </form>
+                </div>
+               
+            </div>
+             <div class="tourmaster-room-booking-bar-content" [hidden]="formType != 'booking'">
+                <div class="tourmaster-room-booking-wrap" hidden="formType != 'booking'">
+                    <form
+                        class="tourmaster-room-booking-form clearfix"
+                        id="tourmaster-room-booking-form"
+                        action="single-room.html#"
+                        data-action="tourmaster_room_booking_form"
+                        method="POST"
+                    >
+                        <div
+                            class="tourmaster-room-date-selection tourmaster-vertical"
+                        >
+                            <div class="tourmaster-custom-start-date gdlr-core-skin-e-background">
+                                <div class="tourmaster-head gdlr-core-skin-e-content">Entrada</div>
+                                <div class="tourmaster-tail gdlr-core-skin-e-content">Jul 28, 2022</div>
+                                <input type="hidden" name="start_date" value="2022-07-28" />
+                            </div>
+                            <div class="tourmaster-custom-end-date gdlr-core-skin-e-background">
+                                <div class="tourmaster-head gdlr-core-skin-e-content">Salida</div>
+                                <div class="tourmaster-tail gdlr-core-skin-e-content">Jul 29, 2022</div>
+                                <input type="hidden" name="end_date" value="2022-07-29" />
+                            </div>
+                            <div class="tourmaster-custom-datepicker-wrap" data-date-format="d M yy">
+                                <i class="tourmaster-custom-datepicker-close icon_close"></i>
+                                <div class="tourmaster-custom-datepicker-title"></div>
+                                <div class="tourmaster-custom-datepicker-calendar"></div>
+                            </div>
+                        </div>
+                        <div class="tourmaster-room-amount-selection">
+                      
+                        </div>
+                        <div class="tourmaster-room-booking-guest-selection tourmaster-one">
+                            <div class="tourmaster-room-amount-selection">
+                                <div class="tourmaster-custom-amount-display gdlr-core-skin-e-background">
+                                    <div class="tourmaster-head gdlr-core-skin-e-content">
+                                        <span>Room<span class="tourmaster-number">1</span> : </span>Huespedes
+                                    </div>
+                                    <div class="tourmaster-tail gdlr-core-skin-e-content"><span class="tourmaster-space"></span>Adults 2<span class="tourmaster-space"></span>Children 0</div>
+                                </div>
+                                <div class="tourmaster-custom-amount-selection-wrap">
+                                    <div class="tourmaster-custom-amount-selection-item clearfix" data-label="Adults">
+                                        <div class="tourmaster-head">Adultos</div>
+                                        <div class="tourmaster-tail">
+                                            <span class="tourmaster-minus"><i class="icon_minus-06"></i></span><span class="tourmaster-amount">2</span>
+                                            <span class="tourmaster-plus"><i class="icon_plus"></i></span>
+                                        </div>
+                                        <input type="hidden" name="adult[]" value="2" />
+                                    </div>
+                                    <div class="tourmaster-custom-amount-selection-item clearfix" data-label="Children">
+                                        <div class="tourmaster-head">Niños</div>
+                                        <div class="tourmaster-tail">
+                                            <span class="tourmaster-minus"><i class="icon_minus-06"></i></span><span class="tourmaster-amount">0</span>
+                                            <span class="tourmaster-plus"><i class="icon_plus"></i></span>
+                                        </div>
+                                        <input type="hidden" name="children[]" value="0" />
+                                    </div>
+                                    <div class="tourmaster-custom-amount-selection-item clearfix" data-label="Mascotas">
+                                        <div class="tourmaster-head">Mascotas</div>
+                                        <div class="tourmaster-tail">
+                                            <span class="tourmaster-minus"><i class="icon_minus-06"></i></span><span class="tourmaster-amount">0</span>
+                                            <span class="tourmaster-plus"><i class="icon_plus"></i></span>
+                                        </div>
+                                        <input type="hidden" name="children[]" value="0" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="room_id" value="15031" /><input type="hidden" name="post_type" value="room" />
+                        <input type="submit" class="tourmaster-room-button tourmaster-full" value="Reserva" />
+                    </form>
+                </div>
+                <div class="tourmaster-room-enquiry-wrap" hidden="formType !='enquiry'">
+                    <form
+                        class="tourmaster-enquiry-form tourmaster-form-field tourmaster-room clearfix"
+                        id="tourmaster-enquiry-form"
+                        data-action="tourmaster_room_send_enquiry_form"
+                        data-validate-error="Please fill all required fields."
+                    >
+                        <div class="tourmaster-enquiry-field tourmaster-enquiry-field-full-name tourmaster-type-text clearfix">
+                            <div class="tourmaster-head">Full Name<span class="tourmaster-req">*</span></div>
+                            <div class="tourmaster-tail clearfix"><input type="text" name="full-name" value="" data-required /></div>
+                        </div>
+                        <div class="tourmaster-enquiry-field tourmaster-enquiry-field-email-address tourmaster-type-text clearfix">
+                            <div class="tourmaster-head">Email Address<span class="tourmaster-req">*</span></div>
+                            <div class="tourmaster-tail clearfix"><input type="text" name="email-address" value="" data-required /></div>
+                        </div>
+                        <div class="tourmaster-enquiry-field tourmaster-enquiry-field-your-enquiry tourmaster-type-textarea clearfix">
+                            <div class="tourmaster-head">Your Enquiry<span class="tourmaster-req">*</span></div>
+                            <div class="tourmaster-tail clearfix"><textarea name="your-enquiry" data-required></textarea></div>
+                        </div>
+                        <div class="tourmaster-enquiry-term">
+                            <input type="checkbox" name="tourmaster-require-acceptance" />* I agree with <a href="single-room.html#" target="_blank">Terms of Service</a> and <a href="single-room.html#" target="_blank">Privacy Statement</a>.
+                            <div class="tourmaster-enquiry-term-message tourmaster-enquiry-form-message tourmaster-failed">Please agree to all the terms and conditions before proceeding to the next step</div>
+                        </div>
+                        <div class="tourmaster-enquiry-form-message"></div>
+                        <input type="hidden" name="room-id" value="15031" /><input type="submit" class="tourmaster-room-button tourmaster-full" value="Submit Enquiry" />
+                    </form>
+                </div>
+            </div>
+            <div class="tourmaster-room-booking-bar-content" [hidden]="formType != 'enquiry'">
+            
+                <div class="tourmaster-room-enquiry-wrap" [hidden]="formType !='enquiry'">
+                    <form
+                        class="tourmaster-enquiry-form tourmaster-form-field tourmaster-room clearfix"
+                        id="tourmaster-enquiry-form"
+                        data-action="tourmaster_room_send_enquiry_form"
+                        data-validate-error="Please fill all required fields."
+                    >
+                        <div class="tourmaster-enquiry-field tourmaster-enquiry-field-full-name tourmaster-type-text clearfix">
+                            <div class="tourmaster-head">Nombre<span class="tourmaster-req">*</span></div>
+                            <div class="tourmaster-tail clearfix"><input type="text" name="full-name" value="" data-required /></div>
+                        </div>
+                        <div class="tourmaster-enquiry-field tourmaster-enquiry-field-email-address tourmaster-type-text clearfix">
+                            <div class="tourmaster-head">Email <span class="tourmaster-req">*</span></div>
+                            <div class="tourmaster-tail clearfix"><input type="text" name="email-address" value="" data-required /></div>
+                        </div>
+                        <div class="tourmaster-enquiry-field tourmaster-enquiry-field-your-enquiry tourmaster-type-textarea clearfix">
+                            <div class="tourmaster-head">Tu consulta<span class="tourmaster-req">*</span></div>
+                            <div class="tourmaster-tail clearfix"><textarea name="your-enquiry" data-required></textarea></div>
+                        </div>
+                        <div class="tourmaster-enquiry-term">
+                            <input type="checkbox" name="tourmaster-require-acceptance" />* Acepto <a href="single-room.html#" target="_blank">Los Términos </a> y <a href="single-room.html#" target="_blank">las Condiciones de Privacidad</a>.
+                            <div class="tourmaster-enquiry-term-message tourmaster-enquiry-form-message tourmaster-failed">Por favor, acepta todos los términos y condiciones antes de continuar</div>
+                        </div>
+                        <div class="tourmaster-enquiry-form-message"></div>
+                        <input type="hidden" name="room-id" value="15031" />
+                        <input type="submit" class="tourmaster-room-button tourmaster-full" value="Enviar consulta" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

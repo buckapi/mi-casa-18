@@ -9,7 +9,7 @@ export interface Room {
   id?: string;
   number: string; // "HAB 2", "HAB 3", etc.
   name?: string;
-  description: string;
+  description?: string;
   price?: number;
   capacity: number;
   beds: BedInfo[];

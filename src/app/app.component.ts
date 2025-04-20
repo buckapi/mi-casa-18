@@ -9,6 +9,7 @@ import { GlobalService } from './services/global.service';
 import { RoomsComponent } from './components/rooms/rooms.component';
 import { AboutComponent } from './components/about/about.component';
 import { RoomDetailComponent } from "./components/room-detail/room-detail.component";
+import { ContactComponent } from './components/contact/contact.component';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ import { RoomDetailComponent } from "./components/room-detail/room-detail.compon
   imports: [
     HomeComponent,
     CommonModule,
+    ContactComponent,
     HttpClientModule,
     RoomsComponent,
     AboutComponent,

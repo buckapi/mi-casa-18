@@ -136,11 +136,9 @@
                                   <a  class="sf-with-ul-pre" (click)="globalService.activeRoute = 'rooms'">Habitaciones</a>
                                   
                               </li>
-                              <li class="menu-item hotale-normal-menu">
-                                  <a >Reservas</a>
-                              </li>
+                             
                                <li class="menu-item menu-item-has-children">
-                              <a >Contacto</a>
+                              <a (click)="globalService.activeRoute = 'contact'">Contacto</a>
                               
                           </li>
                           </ul>
@@ -213,7 +211,7 @@
         <app-rooms [hidden]="globalService.activeRoute !== 'rooms'"></app-rooms>
         <app-about [hidden]="globalService.activeRoute !== 'about'"></app-about>
       <app-room-detail [hidden]="globalService.activeRoute !== 'room-detail'"></app-room-detail>
-  
+      <app-contact [hidden]="globalService.activeRoute !== 'contact'"></app-contact>
 
       <footer>
           <div class="hotale-footer-wrapper">

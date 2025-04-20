@@ -67,8 +67,13 @@
                                             <div class="gdlr-core-column-service-content-wrapper">
                                                 <div class="gdlr-core-column-service-title-wrap">
                                                     <h3 class="gdlr-core-column-service-title gdlr-core-skin-title" style="font-size: 19px; font-weight: 600; text-transform: none;">Camas  </h3>
-                                                    <div class="gdlr-core-column-service-caption gdlr-core-info-font gdlr-core-skin-caption" style="font-size: 17px; font-weight: 500; font-style: normal; margin-top: 0px;">
+                                                    <!-- <div class="gdlr-core-column-service-caption gdlr-core-info-font gdlr-core-skin-caption" style="font-size: 17px; font-weight: 500; font-style: normal; margin-top: 0px;">
                                                         1 Cama
+                                                    </div> -->
+
+                                                    <div class="tourmaster-info tourmaster-info-bed-type" *ngFor="let bed of globalService.selectedRoom?.beds">
+                                                        <!-- <i class="gdlr-icon-double-bed2"></i> -->
+                                                            <span class="tourmaster-tail"  style="cursor: pointer;">{{bed.quantity}} {{bed.type}}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -93,7 +98,7 @@
                                                 <div class="gdlr-core-column-service-title-wrap">
                                                     <h3 class="gdlr-core-column-service-title gdlr-core-skin-title" style="font-size: 19px; font-weight: 600; text-transform: none;">Capacidad máxima</h3>
                                                     <div class="gdlr-core-column-service-caption gdlr-core-info-font gdlr-core-skin-caption" style="font-size: 17px; font-weight: 500; font-style: normal; margin-top: 0px;">
-                                                        3 Huéspedes
+                                                        {{globalService.selectedRoom?.capacity}} Huéspedes
                                                     </div>
                                                 </div>
                                             </div>
@@ -115,10 +120,7 @@
                                         <div class="gdlr-core-text-box-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-left-align">
                                             <div class="gdlr-core-text-box-item-content" style="font-size: 18px; text-transform: none;">
                                                 <p>
-                                                    Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the
-                                                    coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country,
-                                                    in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day
-                                                    however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.
+                                                    {{globalService.selectedRoom?.description}}
                                                 </p>
                                               
                                             </div>
@@ -144,7 +146,7 @@
                                         <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr" style="padding-bottom: 40px;">
                                             <div class="gdlr-core-title-item-title-wrap">
                                                 <h3 class="gdlr-core-title-item-title gdlr-core-skin-title class-test" style="font-size: 25px; font-weight: 500; letter-spacing: 0px; text-transform: none;">
-                                                    Room Amenities<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span>
+                                                    Comodidades<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span>
                                                 </h3>
                                             </div>
                                         </div>
@@ -152,7 +154,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="gdlr-core-pbf-column gdlr-core-column-20 gdlr-core-column-first" id="gdlr-core-column-8">
+                        <div class="gdlr-core-pbf-column gdlr-core-column-20" id="gdlr-core-column-4">
                             <div
                                 class="gdlr-core-pbf-column-content-margin gdlr-core-js gdlr-core-move-up-with-shadow"
                                 style="margin: 0px 10px 20px 20px; padding: 25px 0px 0px 10px; border-radius: 20px 20px 20px 20px; -moz-border-radius: 20px 20px 20px 20px; -webkit-border-radius: 20px 20px 20px 20px;"
@@ -180,6 +182,7 @@
                                                     >
                                                         TV<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span>
                                                     </h3>
+                                                    <p>Relájate y disfruta de tus programas favoritos después de un día explorando la ciudad.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -187,7 +190,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="gdlr-core-pbf-column gdlr-core-column-20" id="gdlr-core-column-9">
+                        <div class="gdlr-core-pbf-column gdlr-core-column-20" id="gdlr-core-column-4">
                             <div
                                 class="gdlr-core-pbf-column-content-margin gdlr-core-js gdlr-core-move-up-with-shadow"
                                 style="margin: 0px 10px 20px 10px; padding: 25px 0px 0px 10px; border-radius: 20px 20px 20px 20px; -moz-border-radius: 20px 20px 20px 20px; -webkit-border-radius: 20px 20px 20px 20px;"
@@ -213,8 +216,9 @@
                                                         class="gdlr-core-title-item-title gdlr-core-skin-title class-test"
                                                         style="font-size: 17px; font-weight: 500; letter-spacing: 0px; text-transform: none; color: #848484;"
                                                     >
-                                                        Free Wifi<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span>
+                                                        Wifi Gratuito<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span>
                                                     </h3>
+                                                    <p> Mantente conectado en todo momento. Disfruta de internet 24/7 en todas las habitaciones. </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -222,42 +226,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="gdlr-core-pbf-column gdlr-core-column-20" id="gdlr-core-column-10">
-                            <div
-                                class="gdlr-core-pbf-column-content-margin gdlr-core-js gdlr-core-move-up-with-shadow"
-                                style="margin: 0px 20px 20px 10px; padding: 25px 0px 0px 10px; border-radius: 20px 20px 20px 20px; -moz-border-radius: 20px 20px 20px 20px; -webkit-border-radius: 20px 20px 20px 20px;"
-                            >
-                                <div
-                                    class="gdlr-core-pbf-background-wrap"
-                                    style="
-                                        border-radius: 20px 20px 20px 20px;
-                                        -moz-border-radius: 20px 20px 20px 20px;
-                                        -webkit-border-radius: 20px 20px 20px 20px;
-                                        border-width: 1px 1px 1px 1px;
-                                        border-color: #e5e5e5;
-                                        border-style: solid;
-                                    "
-                                ></div>
-                                <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js">
-                                    <div class="gdlr-core-pbf-element">
-                                        <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr" style="padding-bottom: 10px;">
-                                            <div class="gdlr-core-title-item-left-icon" style="margin: -12px 15px 0px 0px; font-size: 35px;"><i class="gdlr-icon-safe-box1" style="color: #1e1e1e;"></i></div>
-                                            <div class="gdlr-core-title-item-left-icon-wrap">
-                                                <div class="gdlr-core-title-item-title-wrap">
-                                                    <h3
-                                                        class="gdlr-core-title-item-title gdlr-core-skin-title class-test"
-                                                        style="font-size: 17px; font-weight: 500; letter-spacing: 0px; text-transform: none; color: #848484;"
-                                                    >
-                                                        Safe<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span>
-                                                    </h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="gdlr-core-pbf-column gdlr-core-column-20 gdlr-core-column-first" id="gdlr-core-column-11">
+                        <div class="gdlr-core-pbf-column gdlr-core-column-20" id="gdlr-core-column-4">
                             <div
                                 class="gdlr-core-pbf-column-content-margin gdlr-core-js gdlr-core-move-up-with-shadow"
                                 style="margin: 0px 10px 20px 20px; padding: 25px 0px 0px 10px; border-radius: 20px 20px 20px 20px; -moz-border-radius: 20px 20px 20px 20px; -webkit-border-radius: 20px 20px 20px 20px;"
@@ -283,8 +252,9 @@
                                                         class="gdlr-core-title-item-title gdlr-core-skin-title class-test"
                                                         style="font-size: 17px; font-weight: 500; letter-spacing: 0px; text-transform: none; color: #848484;"
                                                     >
-                                                        None Smoking<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span>
+                                                    Baños Privados<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span>
                                                     </h3>
+                                                    <p>La privacidad es una prioridad. Cada habitación cuenta con su propio baño para tu conveniencia.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -292,7 +262,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="gdlr-core-pbf-column gdlr-core-column-20" id="gdlr-core-column-12">
+                        <div class="gdlr-core-pbf-column gdlr-core-column-20" id="gdlr-core-column-4">
                             <div
                                 class="gdlr-core-pbf-column-content-margin gdlr-core-js gdlr-core-move-up-with-shadow"
                                 style="margin: 0px 10px 20px 10px; padding: 25px 0px 0px 10px; border-radius: 20px 20px 20px 20px; -moz-border-radius: 20px 20px 20px 20px; -webkit-border-radius: 20px 20px 20px 20px;"
@@ -318,8 +288,9 @@
                                                         class="gdlr-core-title-item-title gdlr-core-skin-title class-test"
                                                         style="font-size: 17px; font-weight: 500; letter-spacing: 0px; text-transform: none; color: #848484;"
                                                     >
-                                                        Air Conditioning<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span>
+                                                        Aire Acondicionado<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span>
                                                     </h3>
+                                                    <p>Disfruta de un ambiente agradable y fresco, especialmente diseñado para tu confort.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -327,42 +298,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="gdlr-core-pbf-column gdlr-core-column-20" id="gdlr-core-column-13">
-                            <div
-                                class="gdlr-core-pbf-column-content-margin gdlr-core-js gdlr-core-move-up-with-shadow"
-                                style="margin: 0px 20px 20px 10px; padding: 25px 0px 0px 10px; border-radius: 20px 20px 20px 20px; -moz-border-radius: 20px 20px 20px 20px; -webkit-border-radius: 20px 20px 20px 20px;"
-                            >
-                                <div
-                                    class="gdlr-core-pbf-background-wrap"
-                                    style="
-                                        border-radius: 20px 20px 20px 20px;
-                                        -moz-border-radius: 20px 20px 20px 20px;
-                                        -webkit-border-radius: 20px 20px 20px 20px;
-                                        border-width: 1px 1px 1px 1px;
-                                        border-color: #e5e5e5;
-                                        border-style: solid;
-                                    "
-                                ></div>
-                                <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js">
-                                    <div class="gdlr-core-pbf-element">
-                                        <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr" style="padding-bottom: 10px;">
-                                            <div class="gdlr-core-title-item-left-icon" style="margin: -12px 15px 0px 0px; font-size: 35px;"><i class="gdlr-icon-oil-heater-1" style="color: #1e1e1e;"></i></div>
-                                            <div class="gdlr-core-title-item-left-icon-wrap">
-                                                <div class="gdlr-core-title-item-title-wrap">
-                                                    <h3
-                                                        class="gdlr-core-title-item-title gdlr-core-skin-title class-test"
-                                                        style="font-size: 17px; font-weight: 500; letter-spacing: 0px; text-transform: none; color: #848484;"
-                                                    >
-                                                        Heater<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span>
-                                                    </h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="gdlr-core-pbf-column gdlr-core-column-20 gdlr-core-column-first" id="gdlr-core-column-14">
+                        <div class="gdlr-core-pbf-column gdlr-core-column-20" id="gdlr-core-column-4">
                             <div
                                 class="gdlr-core-pbf-column-content-margin gdlr-core-js gdlr-core-move-up-with-shadow"
                                 style="margin: 0px 10px 20px 20px; padding: 25px 0px 0px 10px; border-radius: 20px 20px 20px 20px; -moz-border-radius: 20px 20px 20px 20px; -webkit-border-radius: 20px 20px 20px 20px;"
@@ -381,15 +317,16 @@
                                 <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js">
                                     <div class="gdlr-core-pbf-element">
                                         <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr" style="padding-bottom: 10px;">
-                                            <div class="gdlr-core-title-item-left-icon" style="margin: -12px 16px 0px 0px; font-size: 35px;"><i class="gdlr-icon-telephone" style="color: #1e1e1e;"></i></div>
+                                            <div class="gdlr-core-title-item-left-icon" style="margin: -12px 16px 0px 0px; font-size: 35px;"><i class="gdlr-icon-dish" style="color: #1e1e1e;"></i></div>
                                             <div class="gdlr-core-title-item-left-icon-wrap">
                                                 <div class="gdlr-core-title-item-title-wrap">
                                                     <h3
                                                         class="gdlr-core-title-item-title gdlr-core-skin-title class-test"
                                                         style="font-size: 17px; font-weight: 500; letter-spacing: 0px; text-transform: none; color: #848484;"
                                                     >
-                                                        Phone<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span>
+                                                        Cocina <span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span>
                                                     </h3>
+                                                    <p>Pensado para preparar tus comidas.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -397,42 +334,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="gdlr-core-pbf-column gdlr-core-column-20" id="gdlr-core-column-15">
-                            <div
-                                class="gdlr-core-pbf-column-content-margin gdlr-core-js gdlr-core-move-up-with-shadow"
-                                style="margin: 0px 10px 20px 10px; padding: 25px 0px 0px 10px; border-radius: 20px 20px 20px 20px; -moz-border-radius: 20px 20px 20px 20px; -webkit-border-radius: 20px 20px 20px 20px;"
-                            >
-                                <div
-                                    class="gdlr-core-pbf-background-wrap"
-                                    style="
-                                        border-radius: 20px 20px 20px 20px;
-                                        -moz-border-radius: 20px 20px 20px 20px;
-                                        -webkit-border-radius: 20px 20px 20px 20px;
-                                        border-width: 1px 1px 1px 1px;
-                                        border-color: #e5e5e5;
-                                        border-style: solid;
-                                    "
-                                ></div>
-                                <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js">
-                                    <div class="gdlr-core-pbf-element">
-                                        <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr" style="padding-bottom: 10px;">
-                                            <div class="gdlr-core-title-item-left-icon" style="margin: -12px 15px 0px 0px; font-size: 35px;"><i class="gdlr-icon-hair-dryer1" style="color: #1e1e1e;"></i></div>
-                                            <div class="gdlr-core-title-item-left-icon-wrap">
-                                                <div class="gdlr-core-title-item-title-wrap">
-                                                    <h3
-                                                        class="gdlr-core-title-item-title gdlr-core-skin-title class-test"
-                                                        style="font-size: 17px; font-weight: 500; letter-spacing: 0px; text-transform: none; color: #848484;"
-                                                    >
-                                                        Hair Dryer<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span>
-                                                    </h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- <div class="gdlr-core-pbf-column gdlr-core-column-60 gdlr-core-column-first" id="gdlr-core-column-16">
+                        <div class="gdlr-core-pbf-column gdlr-core-column-60 gdlr-core-column-first" id="gdlr-core-column-16">
                             <div class="gdlr-core-pbf-column-content-margin gdlr-core-js" style="margin: 0px 0px 0px 0px; padding: 45px 0px 0px 0px;">
                                 <div class="gdlr-core-pbf-background-wrap"></div>
                                 <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js">
@@ -440,250 +342,46 @@
                                         <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr" style="padding-bottom: 40px;">
                                             <div class="gdlr-core-title-item-title-wrap">
                                                 <h3 class="gdlr-core-title-item-title gdlr-core-skin-title class-test" style="font-size: 25px; font-weight: 500; letter-spacing: 0px; text-transform: none;">
-                                                    Hotel Amenities<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span>
+                                                    NORMAS DEL HOSTAL:
                                                 </h3>
+                                                <span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span>
+                                                <li>NO SE PUEDE FUMAR EN LAS HABITACIONES.</li>
+                                                <li>NO SE PUEDE INGERIR ALIMENTOS EN LAS HABITACIONES.</li>
+                                                <li>NO SE PUEDE CELEBRAR FIESTAS Y EVENTOS EN EL HOTEL.</li>
+                                                <li>SE DEBE DEJAR LA LLAVE EN LA RECEPCIÓN.</li>
+                                                <li>SE DEBE CANCELAR EL VALOR DE LA RESERVA EN LA RECEPCIÓN AL LLEGAR AL HOTEL.</li>
+                                                <p>
+                                                    Horas de check-in y check-out
+                                                    <br />
+                                                    Entrada 15:00
+                                                    <br />
+                                                    Salida 12:00 PM
+                                                </p>
+                                                <h3 class="gdlr-core-title-item-title gdlr-core-skin-title class-test" style="font-size: 25px; font-weight: 500; letter-spacing: 0px; text-transform: none;">
+                                                    A tener en cuenta...
+                                                    <br />
+                                                    Condiciones adicionales
+                                                    </h3>
+                                                    <span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span>
+                                                    <p>Informa a Mi casa 18 GUESTHOUSE con antelación de tu hora prevista de llegada. Para ello, puedes utilizar el apartado de peticiones especiales al hacer la reserva o ponerse en contacto directamente con el alojamiento. Los datos de contacto aparecen en la confirmación de la reserva.
+                                                        Los huéspedes deberán mostrar un documento de identidad válido y una tarjeta de crédito al realizar el registro de entrada. Ten en cuenta que todas las peticiones especiales están sujetas a disponibilidad y pueden comportar suplementos.
+                                                        Las personas menores de 18 años solo pueden alojarse si van acompañadas de alguno de sus progenitores o tutores legales.  
+                                                    </p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div> -->
-
-
-
-
+                        </div>
 
                       
                     </div>
                 </div>
-                <div class="gdlr-core-pbf-sidebar-right gdlr-core-column-extend-right hotale-sidebar-area gdlr-core-column-15 gdlr-core-pbf-sidebar-padding gdlr-core-line-height">
-                    <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
-                        <div class="tourmaster-room-booking-bar-wrap">
-                            <div class="tourmaster-room-booking-bar-title"><span class="tourmaster-active" [ngClass]="{ 'tourmaster-active': formType === 'booking' }" (click)="setFormType('booking')">Reserva tu habitacion</span><span [ngClass]="{ 'tourmaster-active': formType === 'enquiry' }" (click)="setFormType('enquiry')">Consulta</span></div>
-                            <div class="tourmaster-room-booking-bar-content" hidden="formType != 'booking'">
-                                <div class="tourmaster-room-booking-wrap" hidden="formType != 'booking'">
-                                    <form
-                                        class="tourmaster-room-booking-form clearfix"
-                                        id="tourmaster-room-booking-form"
-                                        action="single-room.html#"
-                                        data-action="tourmaster_room_booking_form"
-                                        method="POST"
-                                    >
-                                        <div
-                                            class="tourmaster-room-date-selection tourmaster-vertical"
-                                        >
-                                            <div class="tourmaster-custom-start-date gdlr-core-skin-e-background">
-                                                <div class="tourmaster-head gdlr-core-skin-e-content">Entrada</div>
-                                                <div class="tourmaster-tail gdlr-core-skin-e-content">Jul 28, 2022</div>
-                                                <input type="hidden" name="start_date" value="2022-07-28" />
-                                            </div>
-                                            <div class="tourmaster-custom-end-date gdlr-core-skin-e-background">
-                                                <div class="tourmaster-head gdlr-core-skin-e-content">Salida</div>
-                                                <div class="tourmaster-tail gdlr-core-skin-e-content">Jul 29, 2022</div>
-                                                <input type="hidden" name="end_date" value="2022-07-29" />
-                                            </div>
-                                            <div class="tourmaster-custom-datepicker-wrap" data-date-format="d M yy">
-                                                <i class="tourmaster-custom-datepicker-close icon_close"></i>
-                                                <div class="tourmaster-custom-datepicker-title"></div>
-                                                <div class="tourmaster-custom-datepicker-calendar"></div>
-                                            </div>
-                                        </div>
-                                        <div class="tourmaster-room-amount-selection">
-                                      
-                                        </div>
-                                        <div class="tourmaster-room-booking-guest-selection tourmaster-one">
-                                            <div class="tourmaster-room-amount-selection">
-                                                <div class="tourmaster-custom-amount-display gdlr-core-skin-e-background">
-                                                    <div class="tourmaster-head gdlr-core-skin-e-content">
-                                                        <span>Room<span class="tourmaster-number">1</span> : </span>Huespedes
-                                                    </div>
-                                                    <div class="tourmaster-tail gdlr-core-skin-e-content"><span class="tourmaster-space"></span>Adults 2<span class="tourmaster-space"></span>Children 0</div>
-                                                </div>
-                                                <div class="tourmaster-custom-amount-selection-wrap">
-                                                    <div class="tourmaster-custom-amount-selection-item clearfix" data-label="Adults">
-                                                        <div class="tourmaster-head">Adultos</div>
-                                                        <div class="tourmaster-tail">
-                                                            <span class="tourmaster-minus"><i class="icon_minus-06"></i></span><span class="tourmaster-amount">2</span>
-                                                            <span class="tourmaster-plus"><i class="icon_plus"></i></span>
-                                                        </div>
-                                                        <input type="hidden" name="adult[]" value="2" />
-                                                    </div>
-                                                    <div class="tourmaster-custom-amount-selection-item clearfix" data-label="Children">
-                                                        <div class="tourmaster-head">Niños</div>
-                                                        <div class="tourmaster-tail">
-                                                            <span class="tourmaster-minus"><i class="icon_minus-06"></i></span><span class="tourmaster-amount">0</span>
-                                                            <span class="tourmaster-plus"><i class="icon_plus"></i></span>
-                                                        </div>
-                                                        <input type="hidden" name="children[]" value="0" />
-                                                    </div>
-                                                    <div class="tourmaster-custom-amount-selection-item clearfix" data-label="Mascotas">
-                                                        <div class="tourmaster-head">Mascotas</div>
-                                                        <div class="tourmaster-tail">
-                                                            <span class="tourmaster-minus"><i class="icon_minus-06"></i></span><span class="tourmaster-amount">0</span>
-                                                            <span class="tourmaster-plus"><i class="icon_plus"></i></span>
-                                                        </div>
-                                                        <input type="hidden" name="children[]" value="0" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <input type="hidden" name="room_id" value="15031" /><input type="hidden" name="post_type" value="room" />
-                                        <input type="submit" class="tourmaster-room-button tourmaster-full" value="Book Now" />
-                                    </form>
-                                </div>
-                               
-                            </div>
-                             <div class="tourmaster-room-booking-bar-content" [hidden]="formType != 'booking'">
-                                <div class="tourmaster-room-booking-wrap" hidden="formType != 'booking'">
-                                    <form
-                                        class="tourmaster-room-booking-form clearfix"
-                                        id="tourmaster-room-booking-form"
-                                        action="single-room.html#"
-                                        data-action="tourmaster_room_booking_form"
-                                        method="POST"
-                                    >
-                                        <div
-                                            class="tourmaster-room-date-selection tourmaster-vertical"
-                                        >
-                                            <div class="tourmaster-custom-start-date gdlr-core-skin-e-background">
-                                                <div class="tourmaster-head gdlr-core-skin-e-content">Entrada</div>
-                                                <div class="tourmaster-tail gdlr-core-skin-e-content">Jul 28, 2022</div>
-                                                <input type="hidden" name="start_date" value="2022-07-28" />
-                                            </div>
-                                            <div class="tourmaster-custom-end-date gdlr-core-skin-e-background">
-                                                <div class="tourmaster-head gdlr-core-skin-e-content">Salida</div>
-                                                <div class="tourmaster-tail gdlr-core-skin-e-content">Jul 29, 2022</div>
-                                                <input type="hidden" name="end_date" value="2022-07-29" />
-                                            </div>
-                                            <div class="tourmaster-custom-datepicker-wrap" data-date-format="d M yy">
-                                                <i class="tourmaster-custom-datepicker-close icon_close"></i>
-                                                <div class="tourmaster-custom-datepicker-title"></div>
-                                                <div class="tourmaster-custom-datepicker-calendar"></div>
-                                            </div>
-                                        </div>
-                                        <div class="tourmaster-room-amount-selection">
-                                      
-                                        </div>
-                                        <div class="tourmaster-room-booking-guest-selection tourmaster-one">
-                                            <div class="tourmaster-room-amount-selection">
-                                                <div class="tourmaster-custom-amount-display gdlr-core-skin-e-background">
-                                                    <div class="tourmaster-head gdlr-core-skin-e-content">
-                                                        <span>Room<span class="tourmaster-number">1</span> : </span>Huespedes
-                                                    </div>
-                                                    <div class="tourmaster-tail gdlr-core-skin-e-content"><span class="tourmaster-space"></span>Adults 2<span class="tourmaster-space"></span>Children 0</div>
-                                                </div>
-                                                <div class="tourmaster-custom-amount-selection-wrap">
-                                                    <div class="tourmaster-custom-amount-selection-item clearfix" data-label="Adults">
-                                                        <div class="tourmaster-head">Adultos</div>
-                                                        <div class="tourmaster-tail">
-                                                            <span class="tourmaster-minus"><i class="icon_minus-06"></i></span><span class="tourmaster-amount">2</span>
-                                                            <span class="tourmaster-plus"><i class="icon_plus"></i></span>
-                                                        </div>
-                                                        <input type="hidden" name="adult[]" value="2" />
-                                                    </div>
-                                                    <div class="tourmaster-custom-amount-selection-item clearfix" data-label="Children">
-                                                        <div class="tourmaster-head">Niños</div>
-                                                        <div class="tourmaster-tail">
-                                                            <span class="tourmaster-minus"><i class="icon_minus-06"></i></span><span class="tourmaster-amount">0</span>
-                                                            <span class="tourmaster-plus"><i class="icon_plus"></i></span>
-                                                        </div>
-                                                        <input type="hidden" name="children[]" value="0" />
-                                                    </div>
-                                                    <div class="tourmaster-custom-amount-selection-item clearfix" data-label="Mascotas">
-                                                        <div class="tourmaster-head">Mascotas</div>
-                                                        <div class="tourmaster-tail">
-                                                            <span class="tourmaster-minus"><i class="icon_minus-06"></i></span><span class="tourmaster-amount">0</span>
-                                                            <span class="tourmaster-plus"><i class="icon_plus"></i></span>
-                                                        </div>
-                                                        <input type="hidden" name="children[]" value="0" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <input type="hidden" name="room_id" value="15031" /><input type="hidden" name="post_type" value="room" />
-                                        <input type="submit" class="tourmaster-room-button tourmaster-full" value="Book Now" />
-                                    </form>
-                                </div>
-                                <div class="tourmaster-room-enquiry-wrap" hidden="formType !='enquiry'">
-                                    <form
-                                        class="tourmaster-enquiry-form tourmaster-form-field tourmaster-room clearfix"
-                                        id="tourmaster-enquiry-form"
-                                        data-action="tourmaster_room_send_enquiry_form"
-                                        data-validate-error="Please fill all required fields."
-                                    >
-                                        <div class="tourmaster-enquiry-field tourmaster-enquiry-field-full-name tourmaster-type-text clearfix">
-                                            <div class="tourmaster-head">Full Name<span class="tourmaster-req">*</span></div>
-                                            <div class="tourmaster-tail clearfix"><input type="text" name="full-name" value="" data-required /></div>
-                                        </div>
-                                        <div class="tourmaster-enquiry-field tourmaster-enquiry-field-email-address tourmaster-type-text clearfix">
-                                            <div class="tourmaster-head">Email Address<span class="tourmaster-req">*</span></div>
-                                            <div class="tourmaster-tail clearfix"><input type="text" name="email-address" value="" data-required /></div>
-                                        </div>
-                                        <div class="tourmaster-enquiry-field tourmaster-enquiry-field-your-enquiry tourmaster-type-textarea clearfix">
-                                            <div class="tourmaster-head">Your Enquiry<span class="tourmaster-req">*</span></div>
-                                            <div class="tourmaster-tail clearfix"><textarea name="your-enquiry" data-required></textarea></div>
-                                        </div>
-                                        <div class="tourmaster-enquiry-term">
-                                            <input type="checkbox" name="tourmaster-require-acceptance" />* I agree with <a href="single-room.html#" target="_blank">Terms of Service</a> and <a href="single-room.html#" target="_blank">Privacy Statement</a>.
-                                            <div class="tourmaster-enquiry-term-message tourmaster-enquiry-form-message tourmaster-failed">Please agree to all the terms and conditions before proceeding to the next step</div>
-                                        </div>
-                                        <div class="tourmaster-enquiry-form-message"></div>
-                                        <input type="hidden" name="room-id" value="15031" /><input type="submit" class="tourmaster-room-button tourmaster-full" value="Submit Enquiry" />
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="tourmaster-room-booking-bar-content" [hidden]="formType != 'enquiry'">
-                            
-                                <div class="tourmaster-room-enquiry-wrap" [hidden]="formType !='enquiry'">
-                                    <form
-                                        class="tourmaster-enquiry-form tourmaster-form-field tourmaster-room clearfix"
-                                        id="tourmaster-enquiry-form"
-                                        data-action="tourmaster_room_send_enquiry_form"
-                                        data-validate-error="Please fill all required fields."
-                                    >
-                                        <div class="tourmaster-enquiry-field tourmaster-enquiry-field-full-name tourmaster-type-text clearfix">
-                                            <div class="tourmaster-head">Nombre<span class="tourmaster-req">*</span></div>
-                                            <div class="tourmaster-tail clearfix"><input type="text" name="full-name" value="" data-required /></div>
-                                        </div>
-                                        <div class="tourmaster-enquiry-field tourmaster-enquiry-field-email-address tourmaster-type-text clearfix">
-                                            <div class="tourmaster-head">Email <span class="tourmaster-req">*</span></div>
-                                            <div class="tourmaster-tail clearfix"><input type="text" name="email-address" value="" data-required /></div>
-                                        </div>
-                                        <div class="tourmaster-enquiry-field tourmaster-enquiry-field-your-enquiry tourmaster-type-textarea clearfix">
-                                            <div class="tourmaster-head">Tu consulta<span class="tourmaster-req">*</span></div>
-                                            <div class="tourmaster-tail clearfix"><textarea name="your-enquiry" data-required></textarea></div>
-                                        </div>
-                                        <div class="tourmaster-enquiry-term">
-                                            <input type="checkbox" name="tourmaster-require-acceptance" />* Acepto <a href="single-room.html#" target="_blank">Los Términos </a> y <a href="single-room.html#" target="_blank">las Condiciones de Privacidad</a>.
-                                            <div class="tourmaster-enquiry-term-message tourmaster-enquiry-form-message tourmaster-failed">Por favor, acepta todos los términos y condiciones antes de continuar</div>
-                                        </div>
-                                        <div class="tourmaster-enquiry-form-message"></div>
-                                        <input type="hidden" name="room-id" value="15031" /><input type="submit" class="tourmaster-room-button tourmaster-full" value="Enviar" />
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               <app-forms></app-forms>
             </div>
         </div>
    
-        <div class="gdlr-core-pbf-section">
-            <div class="gdlr-core-pbf-section-container gdlr-core-container clearfix">
-                <div class="gdlr-core-pbf-column gdlr-core-column-60 gdlr-core-column-first" id="gdlr-core-column-23">
-                    <div class="gdlr-core-pbf-column-content-margin gdlr-core-js" style="margin: 0px 0px 0px 0px; padding: 30px 0px 10px 0px;">
-                        <div class="gdlr-core-pbf-background-wrap"></div>
-                        <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js">
-                            <div class="gdlr-core-pbf-element">
-                                <div class="gdlr-core-divider-item gdlr-core-divider-item-normal gdlr-core-item-pdlr gdlr-core-center-align" style="margin-bottom: 20px;">
-                                    <div class="gdlr-core-divider-line gdlr-core-skin-divider"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
        
     </div>
   
