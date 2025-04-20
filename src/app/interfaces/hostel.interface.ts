@@ -14,7 +14,7 @@ export interface Room {
   capacity: number;
   beds: BedInfo[];
   amenities: AmenityType[];
-  images?: string[];
+  images: string[];
   featuredImage?: string;
   available?: boolean;
   size?: string; // "20m²"

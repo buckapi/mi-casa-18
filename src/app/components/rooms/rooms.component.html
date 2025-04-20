@@ -7,7 +7,7 @@
                     <div class="gdlr-core-pbf-element">
                         <div class="tourmaster-room-item clearfix tourmaster-room-item-style-grid2">
                             <div class="tourmaster-room-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
-                                <div class="gdlr-core-item-list tourmaster-item-pdlr tourmaster-column-20 " *ngFor="let room of rooms">
+                                <div class="gdlr-core-item-list tourmaster-item-pdlr tourmaster-column-20 col-md-3 " *ngFor="let room of rooms">
                                     <div class="tourmaster-room-grid2 tourmaster-grid-frame" style="margin-bottom: 40px;">
                                         <div
                                             class="tourmaster-room-grid-inner"
@@ -17,11 +17,17 @@
                                             -webkit-border-radius: 20px 20px 20px 20px;
                                             "
                                         >
-                                            <div class="tourmaster-room-thumbnail tourmaster-media-image gdlr-core-outer-frame-element">
-                                                <a href="single-room.html">
-                                                    <img src="upload/andrew-neel-T0eb55DxDN4-unsplash-780x595.jpg" alt="" width="780" height="595" />
-                                                </a>
-                                            </div>
+                                        <div class="tourmaster-room-thumbnail tourmaster-media-image gdlr-core-outer-frame-element">
+                                            <a (click)="goToRoomDetail(room)" *ngIf="room?.images">
+                                                <div class="room-image-container" style="aspect-ratio: 16/9; width: 100%; height: 100%;">
+                                                    <img 
+                                                        src="{{room.images[0]}}" 
+                                                        alt="" 
+                                                        style="width: 100%; height: 100%; object-fit: cover;"
+                                                    />
+                                                </div>
+                                            </a>
+                                        </div>
                                             <div class="tourmaster-room-content-wrap gdlr-core-skin-e-background gdlr-core-js" data-sync-height="room-item-16" style="padding-right: 30px;">
                                                 <h3 (click)="goToRoomDetail(room)" class="tourmaster-room-title gdlr-core-skin-title" style="text-transform: none; display: flex; align-items: center; justify-content: space-between; cursor: pointer;">
                                                     <a style="display: inline-block; cursor: pointer;"  (click)="goToRoomDetail(room)">{{room.number}} </a>

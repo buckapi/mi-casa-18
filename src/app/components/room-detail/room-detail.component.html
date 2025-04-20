@@ -11,18 +11,16 @@
                                 <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js">
                                     <div class="gdlr-core-pbf-element">
                                         <div class="gdlr-core-image-item gdlr-core-item-pdb gdlr-core-center-align gdlr-core-item-pdlr">
-                                            <div
-                                                class="gdlr-core-image-item-wrap gdlr-core-media-image gdlr-core-image-item-style-round"
-                                                style="border-width: 0px; border-radius: 20px; -moz-border-radius: 20px; -webkit-border-radius: 20px;"
-                                            >
-                                                <img
-                                                    src="upload/christopher-jolly-GqbU78bdJFM-unsplash-1150x490.jpg"
-                                                    alt=""
-                                                    width="1150"
-                                                    height="490"
-                                                    title="christopher-jolly-GqbU78bdJFM-unsplash"
-                                                />
-                                            </div>
+                                            <div *ngIf="globalService.selectedRoom" class="gdlr-core-image-item-wrap gdlr-core-media-image gdlr-core-image-item-style-round" 
+                                            style="border-width: 0px; border-radius: 20px; -moz-border-radius: 20px; -webkit-border-radius: 20px;">
+                                           <img src="{{globalService.selectedRoom.images[0] || 'upload/default-image.jpg'}}"
+                                                alt=""
+                                               
+                                                width="1150"
+                                                height="490"
+                                                title="christopher-jolly-GqbU78bdJFM-unsplash"
+                                           />
+                                       </div>
                                         </div>
                                     </div>
                                 </div>

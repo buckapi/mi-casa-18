@@ -15,7 +15,17 @@ export class RoomDetailComponent {
   formType: string = 'booking';
   constructor(public globalService: GlobalService) { }
   ngOnInit() {
-    this.globalService.selectedRoom = null;
+    this.globalService.selectedRoom = {
+      number: '',
+      price: 0,
+      capacity: 0,
+      beds: [],
+      amenities: [],
+      images: [],
+      featuredImage: '',
+      available: true,
+      size: ''
+  };
     
   }
   setFormType(type: string) {
