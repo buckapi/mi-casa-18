@@ -2,18 +2,31 @@ import { Component, OnInit } from '@angular/core';
 import { ScriptLoaderService } from './services/loader.service';
 import { HomeComponent } from './components/home/home.component';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import * as jQuery from 'jquery';
 import 'jquery-ui-dist/jquery-ui';
+import { GlobalService } from './services/global.service';
+import { RoomsComponent } from './components/rooms/rooms.component';
+import { AboutComponent } from './components/about/about.component';
+
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HomeComponent, CommonModule],
+  imports: [
+    HomeComponent, 
+    CommonModule,
+    HttpClientModule,
+    RoomsComponent,
+    AboutComponent
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
   title = 'mi-casa';
-  constructor(private scriptLoader: ScriptLoaderService) {}
+  constructor(
+    public globalService: GlobalService,
+    private scriptLoader: ScriptLoaderService) {}
   ngOnInit() {
     this.loadScripts();
   }

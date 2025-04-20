@@ -2,7 +2,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import PocketBase from 'pocketbase';
 import { BehaviorSubject, Observable, from, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { Room } from '../interfaces/hostel-types.interface';
+import { Room } from '../interfaces/hostel.interface';
 
 @Injectable({
   providedIn: 'root',

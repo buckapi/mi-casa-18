@@ -5,13 +5,14 @@ import {ROOM_TYPES,  RoomType } from '../constants/hostel.constants';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { CONTACT_INFO } from '../constants/hostel.constants';
 import { Observable } from 'rxjs';
+import { HostelService } from './hostel.service';
 @Injectable({
   providedIn: 'root'
 })
 export class GlobalService {
   searchTerm: string = "";
   room: Room | null = null;
-  activeRoute: string = "home";
+  activeRoute: string = "rooms";
   dashboardOption: string = "";
   params: any = {};
   roomTypeSelected: boolean = false;
@@ -22,12 +23,17 @@ export class GlobalService {
   rooms: Room[] = []; 
   constructor(
     private sanitizer: DomSanitizer,
+    public hostelService: HostelService,
     public realtimeRoomsService: RealtimeRoomsService
   ) {
     this.rooms$ = this.realtimeRoomsService.roomsSubject.asObservable();
     this.rooms$.subscribe(rooms => {
       this.rooms = rooms;
     });
+    this.hostelService.getAllRooms().then(rooms => {
+      this.rooms = rooms;
+    });
+    console.log('habitaciones', this.rooms);
   }
 
   getWhatsappUrl(room?: Room): SafeUrl {

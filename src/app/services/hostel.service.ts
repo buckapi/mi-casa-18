@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import PocketBase from 'pocketbase';
-import { Room } from '../interfaces/hostel-types.interface';
+import { Room } from '../interfaces/hostel.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +34,9 @@ export class HostelService {
         return false;
       });
   }
-
+  getAllRooms(): Promise<Room[]> {
+    return this.pb.collection('rooms').getFullList();
+  }
   getHostelInfo() {
     return this.pb.collection('hostel_info').getFirstListItem('');
   }

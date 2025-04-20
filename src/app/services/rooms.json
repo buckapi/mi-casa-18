@@ -1,0 +1,39 @@
+{
+    "rooms": [
+      {
+        "id": "m8dlo5d4zy8hcz9",
+        "number": "HAB 2",
+        "price": 120000,
+        "available": true,
+        "amenities": ["wifi", "air_conditioning", "tv", "private_bath", "closet"],
+        "beds": [
+          { "type": "doble", "quantity": 1 }
+        ],
+        "description": ""
+      },
+      {
+        "id": "gz2j9bzcqyv9jou",
+        "number": "HAB 3",
+        "price": 150000,
+        "available": true,
+        "amenities": ["wifi", "air_conditioning", "tv", "private_bath"],
+        "beds": [
+          { "type": "doble", "quantity": 1 },
+          { "type": "sencilla", "quantity": 1 }
+        ],
+        "description": ""
+      },
+      {
+        "id": "odth0oxyw92opc8",
+        "number": "HAB 4",
+        "price": 180000,
+        "available": true,
+        "amenities": ["wifi", "air_conditioning", "tv", "private_bath", "closet"],
+        "beds": [
+          { "type": "doble", "quantity": 2 },
+          { "type": "sencilla", "quantity": 1 }
+        ],
+        "description": ""
+      }
+    ]
+  }
