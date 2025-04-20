@@ -209,9 +209,9 @@
           <!-- hotale-header-container -->
       </header>
       <!-- header -->
-       <app-home></app-home>
-        <app-rooms></app-rooms>
-        <app-about></app-about>
+       <app-home [hidden]="globalService.activeRoute !== 'home'"></app-home>
+        <app-rooms [hidden]="globalService.activeRoute !== 'rooms'"></app-rooms>
+        <app-about [hidden]="globalService.activeRoute !== 'about'"></app-about>
       
   
 

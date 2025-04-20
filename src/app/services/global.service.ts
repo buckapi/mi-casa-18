@@ -12,7 +12,7 @@ import { HostelService } from './hostel.service';
 export class GlobalService {
   searchTerm: string = "";
   room: Room | null = null;
-  activeRoute: string = "rooms";
+  activeRoute: string = "home";
   dashboardOption: string = "";
   params: any = {};
   roomTypeSelected: boolean = false;
