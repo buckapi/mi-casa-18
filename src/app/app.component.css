@@ -1,0 +1,120 @@
+.whatsapp-float {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    bottom: 25px;
+    right: 20px;
+    color: #FFF;
+    background-color: #fff;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 1px 1px 4px 4px green;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;  
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    background-color: green;
+    color: #FFF;
+    transform: scale(1.1);
+}
+
+.whatsapp-float i {
+    margin-top: 0;
+}
+
+
+
+/* Estilos para mejorar la visualización */
+.tourmaster-error-message {
+    color: #ff3860;
+    background: #fff5f5;
+    padding: 10px 15px;
+    border-radius: 4px;
+    margin: 15px 0;
+    font-size: 0.9em;
+    border-left: 3px solid #ff3860;
+  }
+  
+  .auth-status {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .auth-status p {
+    margin-bottom: 15px;
+  }
+  
+  .tourmaster-button[disabled] {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  
+  .icon_loading {
+    animation: spin 1s linear infinite;
+    display: inline-block;
+  }
+  
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* Estilos para el menú desplegable */
+.user-logged-in {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.user-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: white;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1000;
+  padding: 15px;
+  border-radius: 4px;
+  top: 100%;
+}
+
+.user-logged-in:hover .user-dropdown {
+  display: block;
+}
+
+.tourmaster-user-top-bar {
+  position: relative;
+}
+
+/* Asegurar que el modal de login no se muestre cuando está autenticado */
+.tourmaster-user-top-bar.tourmaster-guest .user-logged-in {
+  display: none;
+}
+
+.tourmaster-user-top-bar:not(.tourmaster-guest) .tourmaster-lightbox-content-wrap {
+  display: none;
+}
+.tourmaster-user-top-bar-login {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tourmaster-user-top-bar-login:hover {
+  color: #ff5a5f; /* Color al hacer hover */
+}
+
+.user-logged-in {
+  display: flex;
+  align-items: center;
+}
+
+.icon_lock-open_alt {
+  margin-right: 5px;
+}

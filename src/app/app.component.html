@@ -1,303 +1,245 @@
-
 <div class="hotale-mobile-header-wrap">
-  <div class="hotale-mobile-header hotale-header-background hotale-style-slide hotale-sticky-mobile-navigation" id="hotale-mobile-header">
-      <div class="hotale-mobile-header-container hotale-container clearfix">
-          <div class="hotale-logo hotale-item-pdlr">
-              <div class="hotale-logo-inner">
-                  <a class="hotale-fixed-nav-logo" href="index.html">
-                      <img
-                          src="images/logo.png"
-                          alt=""
-                          width="147"
-                          height="40"
-                          title="apartment2-logox1"
-                      />
-                  </a>
-                  <a class="hotale-orig-logo" href="index.html">
-                      <img src="images/logo.png" alt="" width="294" height="80" title="logo" />
-                  </a>
-              </div>
-          </div>
-          <div class="hotale-mobile-menu-right">
-              <div
-                  class="tourmaster-user-top-bar tourmaster-guest tourmaster-style-2"
-                  data-redirect="index.html"
-                  data-ajax-url="#"
-              >
-                  <span class="tourmaster-user-top-bar-login" data-tmlb="login"><i class="icon_lock_alt"></i><span class="tourmaster-text">Login</span></span>
-                  <div class="tourmaster-lightbox-content-wrap" data-tmlb-id="login">
-                      <div class="tourmaster-lightbox-head">
-                          <h3 class="tourmaster-lightbox-title">Login</h3>
-                          <i class="tourmaster-lightbox-close icon_close"></i>
-                      </div>
-                      <div class="tourmaster-lightbox-content">
-                          <form class="tourmaster-login-form tourmaster-form-field tourmaster-with-border" method="post" action="index.html#wp-login.php">
-                              <div class="tourmaster-login-form-fields clearfix">
-                                  <p class="tourmaster-login-user">
-                                      <label>Username or E-Mail</label>
-                                      <input type="text" name="log" />
-                                  </p>
-                                  <p class="tourmaster-login-pass">
-                                      <label>Password</label>
-                                      <input type="password" name="pwd" />
-                                  </p>
-                              </div>
+    <div class="hotale-mobile-header hotale-header-background hotale-style-slide hotale-sticky-mobile-navigation"
+        id="hotale-mobile-header">
+        <div class="hotale-mobile-header-container hotale-container clearfix">
+            <div class="hotale-logo hotale-item-pdlr">
+                <div class="hotale-logo-inner">
+                    <a class="hotale-fixed-nav-logo" href="index.html">
+                        <img src="images/logo.png" alt="" width="147" height="40" title="apartment2-logox1" />
+                    </a>
+                    <a class="hotale-orig-logo" href="index.html">
+                        <img src="images/logo.png" alt="" width="294" height="80" title="logo" />
+                    </a>
+                </div>
+            </div>
+            <div class="hotale-mobile-menu-right">
+                
+                <div class="hotale-mobile-menu">
+                    <a class="hotale-mm-menu-button hotale-mobile-menu-button hotale-mobile-button-hamburger"
+                        href="index.html#hotale-mobile-menu"><span></span></a>
+                    <div class="hotale-mm-menu-wrap hotale-navigation-font" id="hotale-mobile-menu" data-slide="right">
+                        <ul id="menu-main-navigation" class="m-menu">
+                            <li class="menu-item menu-item-home current-menu-item  menu-item-has-children">
+                                <a (click)="globalService.activeRoute = 'home'" aria-current="page">Inicio</a>
 
-                              <p class="tourmaster-login-submit">
-                                  <input type="submit" name="wp-submit" class="tourmaster-button" value="Sign In!" />
-                              </p>
-                              <p class="tourmaster-login-lost-password">
-                                  <a href="index.html#">Forget Password?</a>
-                              </p>
+                            </li>
+                            <li class="menu-item menu-item-has-children">
+                                <a (click)="globalService.activeRoute = 'about'" *ngIf="!authService.isAuthenticated()">Mi Casa 18</a>
 
-                          </form>
+                            </li>
+                            <li class="menu-item menu-item-has-children">
+                                <a (click)="globalService.activeRoute = 'rooms'" *ngIf="!authService.isAuthenticated()">Habitaciones</a>
 
-                          <div class="tourmaster-login-bottom">
-                              <h3 class="tourmaster-login-bottom-title">Do not have an account?</h3>
-                              <a class="tourmaster-login-bottom-link" href="register.html">Create an Account</a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="hotale-mobile-menu">
-                  <a class="hotale-mm-menu-button hotale-mobile-menu-button hotale-mobile-button-hamburger" href="index.html#hotale-mobile-menu"><span></span></a>
-                  <div class="hotale-mm-menu-wrap hotale-navigation-font" id="hotale-mobile-menu" data-slide="right">
-                      <ul id="menu-main-navigation" class="m-menu">
-                          <li class="menu-item menu-item-home current-menu-item  menu-item-has-children" >
-                              <a href="index.html" aria-current="page">Inicio</a>
-                              
-                          </li>
-                          <li class="menu-item menu-item-has-children">
-                              <a href="index.html#">Mi Casa 18</a>
-                             
-                          </li>
-                          <li class="menu-item menu-item-has-children">
-                              <a >Habitaciones</a>
-                              
-                          </li>
-                          <li class="menu-item menu-item-has-children">
-                              <a >Reservas</a>
-                              
-                          </li>
-                          <li class="menu-item menu-item-has-children">
-                              <a >Contacto</a>
-                              
-                          </li>
+                            </li>
+                            <li class="menu-item menu-item-has-children">
+                                <a (click)="globalService.activeRoute = 'contact'" *ngIf="!authService.isAuthenticated()">Contacto</a>
 
-                       </ul>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="hotale-body-outer-wrapper">
-  <div class="hotale-body-wrapper clearfix hotale-with-frame">
-      <header class="hotale-header-wrap hotale-header-style-plain hotale-style-center-menu hotale-sticky-navigation hotale-style-fixed" data-navigation-offset="75">
-          <div class="hotale-header-background"></div>
-          <div class="hotale-header-container hotale-header-full">
-              <div class="hotale-header-container-inner clearfix">
-                  <div class="hotale-logo hotale-item-pdlr">
-                      <div class="hotale-logo-inner">
-                          <a class="hotale-fixed-nav-logo" href="index.html">
-                              <img
-                                  src="images/logo.png"
-                                  alt=""
-                                  width="147"
-                                  height="40"
-                                  title="apartment2-logox1"
-                              />
-                          </a>
-                          <a class="hotale-orig-logo" href="index.html">
-                              <img
-                                  src="images/logo.png"
-                                  alt=""
-                                  width="147"
-                                  height="40"
-                                  title="apartment2-logox1"
-                              />
-                          </a>
-                      </div>
-                  </div>
-                  <div class="hotale-navigation hotale-item-pdlr clearfix">
-                      <div class="hotale-main-menu" id="hotale-main-menu">
-                          <ul id="menu-main-navigation-1" class="sf-menu">
-                              <li
-                                  class="menu-item menu-item-home current-menu-item  menu-item-has-children hotale-normal-menu"
-                              >
-                                  <a  class="sf-with-ul-pre" (click)="globalService.activeRoute = 'home'">Inicio</a>
-                                  
-                              </li>
-                              <li class="menu-item menu-item-has-children hotale-normal-menu">
-                                  <a  class="sf-with-ul-pre" (click)="globalService.activeRoute = 'about'">Mi Casa 18</a>
+    <div class="hotale-body-wrapper clearfix hotale-with-frame">
+        <header
+            class="hotale-header-wrap hotale-header-style-plain hotale-style-center-menu hotale-sticky-navigation hotale-style-fixed"
+            data-navigation-offset="75">
+            <div class="hotale-header-background"></div>
+            <div class="hotale-header-container hotale-header-full">
+                <div class="hotale-header-container-inner clearfix">
+                    <div class="hotale-logo hotale-item-pdlr">
+                        <div class="hotale-logo-inner">
+                            <a class="hotale-fixed-nav-logo" (click)="globalService.activeRoute = 'home'">
+                                <img src="images/logo.png" alt="" width="147" height="40" title="apartment2-logox1" />
+                            </a>
+                            <a class="hotale-orig-logo" (click)="globalService.activeRoute = 'home'">
+                                <img src="images/logo.png" alt="" width="147" height="40" title="apartment2-logox1" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hotale-navigation hotale-item-pdlr clearfix">
+                        <div class="hotale-main-menu" id="hotale-main-menu">
+                            <ul id="menu-main-navigation-1" class="sf-menu">
+                                <li
+                                    class="menu-item menu-item-home current-menu-item  menu-item-has-children hotale-normal-menu">
+                                    <a class="sf-with-ul-pre" (click)="globalService.activeRoute = 'home'" *ngIf="!authService.isAuthenticated()">Inicio</a>
+
+                                </li>
+                                <li class="menu-item menu-item-has-children hotale-normal-menu">
+                                    <a class="sf-with-ul-pre" (click)="globalService.activeRoute = 'about'" *ngIf="!authService.isAuthenticated()">Mi Casa
+                                        18</a>
+
+                                </li>
+                                <li class="menu-item menu-item-has-children hotale-normal-menu">
+                                    <a class="sf-with-ul-pre"
+                                        (click)="globalService.activeRoute = 'rooms'">Habitaciones</a>
+
+                                </li>
+
+                                <li class="menu-item menu-item-has-children">
+                                    <a (click)="globalService.activeRoute = 'contact'" *ngIf="!authService.isAuthenticated()">Contacto</a>
+
+                                </li>
+                            </ul>
+                            <div class="hotale-navigation-slide-bar hotale-navigation-slide-bar-style-2 hotale-left"
+                                data-size-offset="0" data-width="19px" id="hotale-navigation-slide-bar"></div>
+                        </div>
+                        <div class="hotale-main-menu-right-wrap clearfix hotale-item-mglr hotale-navigation-top">
+                            <div class="tourmaster-room-navigation-checkout-wrap">
+                                <a id="tourmaster-room-navigation-checkout-button"
+                                    class="tourmaster-room-navigation-checkout-button"
+                                    data-label="Book Now" (click)="globalService.activeRoute = 'rooms'" style="cursor: pointer;">
+                                    Reservar<span class="tourmaster-count">0</span>
+                                </a>
+                            </div>
+                            <div class="tourmaster-user-top-bar">
+                                <!-- Mostrar directamente el botón de cerrar sesión si está autenticado -->
+                                <div *ngIf="authService.isAuthenticated()" class="user-logged-in">
+                                  <span class="tourmaster-user-top-bar-login" (click)="logout()">
+                                    <i class="icon_lock-open_alt"></i>
+                                    <span class="tourmaster-text">Cerrar Sesión</span>
+                                  </span>
+                                </div>
                                 
-                              </li>
-                              <li class="menu-item menu-item-has-children hotale-normal-menu">
-                                  <a  class="sf-with-ul-pre" (click)="globalService.activeRoute = 'rooms'">Habitaciones</a>
+                                <!-- Mostrar botón de login y modal si no está autenticado -->
+                                <div *ngIf="!authService.isAuthenticated()">
+                                  <span class="tourmaster-user-top-bar-login" data-tmlb="login">
+                                    <i class="icon_lock_alt"></i>
+                                    <span class="tourmaster-text">Administrar</span>
+                                  </span>
                                   
-                              </li>
-                             
-                               <li class="menu-item menu-item-has-children">
-                              <a (click)="globalService.activeRoute = 'contact'">Contacto</a>
-                              
-                          </li>
-                          </ul>
-                          <div class="hotale-navigation-slide-bar hotale-navigation-slide-bar-style-2 hotale-left" data-size-offset="0" data-width="19px" id="hotale-navigation-slide-bar"></div>
-                      </div>
-                      <div class="hotale-main-menu-right-wrap clearfix hotale-item-mglr hotale-navigation-top">
-                          <div class="tourmaster-room-navigation-checkout-wrap">
-                                      <a
-                                          id="tourmaster-room-navigation-checkout-button"
-                                          class="tourmaster-room-navigation-checkout-button"
-                                          
-                                          data-checkout-label="Check Out"
-                                          data-label="Book Now"
-                                      >
-                                          Reservar<span class="tourmaster-count">0</span>
-                                      </a>
-                                      <div class="tourmaster-room-cart-item-wrap">
-                                          <div class="tourmaster-room-cart-items">
-                                              <ul></ul>
-                                              <a class="tourmaster-checkout-button" href="index.html#">Check Out</a>
-                                          </div>
-                                      </div>
-                                  </div>
-                          <div
-                              class="tourmaster-user-top-bar tourmaster-guest tourmaster-style-2"
-                              data-redirect="index.html"
-                              data-ajax-url="#"
-                          >
-                              <span class="tourmaster-user-top-bar-login" data-tmlb="login"><i class="icon_lock_alt"></i><span class="tourmaster-text">Administrar</span></span>
-                              <div class="tourmaster-lightbox-content-wrap" data-tmlb-id="login">
-                                  <div class="tourmaster-lightbox-head">
-                                      <h3 class="tourmaster-lightbox-title">Login</h3>
-                                      <i class="tourmaster-lightbox-close icon_close"></i>
-                                  </div>
-                                  <div class="tourmaster-lightbox-content">
-                                      <form class="tourmaster-login-form tourmaster-form-field tourmaster-with-border" method="post" action="index.html#wp-login.php">
-                                          <div class="tourmaster-login-form-fields clearfix">
-                                              <p class="tourmaster-login-user">
-                                                  <label>Username or E-Mail</label>
-                                                  <input type="text" name="log" />
-                                              </p>
-                                              <p class="tourmaster-login-pass">
-                                                  <label>Password</label>
-                                                  <input type="password" name="pwd" />
-                                              </p>
-                                          </div>
-
-                                          <p class="tourmaster-login-submit">
-                                              <input type="submit" name="wp-submit" class="tourmaster-button" value="Sign In!" />
+                                  <div class="tourmaster-lightbox-content-wrap" data-tmlb-id="login">
+                                    <div class="tourmaster-lightbox-head">
+                                      <h3 class="tourmaster-lightbox-title">Iniciar Sesión</h3>
+                                      <i class="tourmaster-lightbox-close icon_close" (click)="closeLoginModal()"></i>
+                                    </div>
+                                    <div class="tourmaster-lightbox-content">
+                                      <form (submit)="login($event)" class="tourmaster-login-form">
+                                        <div class="tourmaster-login-form-fields clearfix">
+                                          <p class="tourmaster-login-user">
+                                            <label>Usuario</label>
+                                            <input type="text" [(ngModel)]="username" name="username" required>
                                           </p>
-                                          <p class="tourmaster-login-lost-password">
-                                              <a href="index.html#">Forget Password?</a>
+                                          <p class="tourmaster-login-pass">
+                                            <label>Contraseña</label>
+                                            <input type="password" [(ngModel)]="password" name="password" required>
                                           </p>
-
+                                        </div>
+                                        
+                                        <div *ngIf="errorMessage" class="tourmaster-error-message">
+                                          {{ errorMessage }}
+                                        </div>
+                                        
+                                        <p class="tourmaster-login-submit">
+                                          <button type="submit" class="tourmaster-button" [disabled]="loading">
+                                            {{ loading ? 'Iniciando...' : 'Ingresar' }}
+                                          </button>
+                                        </p>
                                       </form>
-
+                                    </div>
                                   </div>
+                                </div>
                               </div>
-                          </div>
-                      </div>
-                  </div>
-                  <!-- hotale-navigation -->
-              </div>
-              <!-- hotale-header-inner -->
-          </div>
-          <!-- hotale-header-container -->
-      </header>
-      <!-- header -->
-       <app-home [hidden]="globalService.activeRoute !== 'home'"></app-home>
+                        </div>
+                    </div>
+                    <!-- hotale-navigation -->
+                </div>
+                <!-- hotale-header-inner -->
+            </div>
+            <!-- hotale-header-container -->
+        </header>
+        <!-- header -->
+        <app-home [hidden]="globalService.activeRoute !== 'home'"></app-home>
         <app-rooms [hidden]="globalService.activeRoute !== 'rooms'"></app-rooms>
         <app-about [hidden]="globalService.activeRoute !== 'about'"></app-about>
-      <app-room-detail [hidden]="globalService.activeRoute !== 'room-detail'"></app-room-detail>
-      <app-contact [hidden]="globalService.activeRoute !== 'contact'"></app-contact>
+        <app-room-detail [hidden]="globalService.activeRoute !== 'room-detail'"></app-room-detail>
+        <app-contact [hidden]="globalService.activeRoute !== 'contact'"></app-contact>
 
-      <footer>
-          <div class="hotale-footer-wrapper">
-              <div class="hotale-footer-container hotale-container clearfix">
-                  <div class="hotale-footer-column hotale-item-pdlr hotale-column-20">
-                      <div id="block-25" class="widget widget_block widget_media_image hotale-widget">
-                          <figure class="wp-block-image size-full is-resized">
-                              <img loading="lazy" src="images/logo.png" alt="" class="wp-image-15952" width="126" height="34" />
-                          </figure>
-                      </div>
-                      
-                      <div id="block-23" class="widget widget_block widget_text hotale-widget">
-                          <p>Mi casa 18 ofrece comodidad y confianza que expande la imaginación y cuna la espíritu.</p>
-                      </div>
-                      <div id="block-24" class="widget widget_block widget_media_image hotale-widget">
-                          <figure class="wp-block-image size-full">
-                              <img
-                                  loading="lazy"
-                                  width="383"
-                                  height="137"
-                                  src="upload/resort2-footer-bg.jpg"
-                                  alt=""
-                                  class="wp-image-15944"
-                              />
-                          </figure>
-                      </div>
-                  </div>
-                  <div class="hotale-footer-column hotale-item-pdlr hotale-column-20">
-                      <div id="gdlr-core-custom-menu-widget-2" class="widget widget_gdlr-core-custom-menu-widget hotale-widget">
-                          <h1 class="hotale-widget-title">Enlaces</h1>
-                          <span class="clear"></span>
-                          <div class="menu-quick-links-container">
-                              <ul id="menu-quick-links" class="gdlr-core-custom-menu-widget gdlr-core-menu-style-half">
-                                  <li class="menu-item hotale-normal-menu"><a href="index.html#">Política de privacidad</a></li>
-                                  <li class="menu-item hotale-normal-menu"><a href="index.html#">FAQ</a></li>
-                                  
-                                  <li class="menu-item hotale-normal-menu"><a href="contact.html">Contactanos</a></li>
-                                  <li class="menu-item hotale-normal-menu">
-                                      <a href="room-search.html">Reservar</a>
-                                  </li>
-                                  <li class="menu-item hotale-normal-menu">
-                                      <a href="room-grid-style-3.html">Lista de habitaciones</a>
-                                  </li>
-                                  <li class="menu-item hotale-normal-menu"><a href="about-us.html">Mi casa 18</a></li>
-                              </ul>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="hotale-footer-column hotale-item-pdlr hotale-column-20">
-                      <div id="gdlr-core-newsletter-widget-2" class="widget widget_gdlr-core-newsletter-widget hotale-widget">
-                          <h1 class="hotale-widget-title">Siguénos Mi Casa 18</h1>
-                          <div id="block-8" class="widget widget_block hotale-widget">
-                              <p>
-                                  <span class="gdlr-core-social-network-item gdlr-core-item-pdb gdlr-core-none-align gdlr-direction-horizontal" style="padding-bottom: 0px; display: block;" id="gdlr-core-social-network-1">
-                                      <a
-                                          href="https://web.facebook.com/profile.php?id=61555231991315#"
-                                          target="_blank"
-                                          class="gdlr-core-social-network-icon"
-                                          title="facebook"
-                                          style="color: #ffffff; width: 46px; height: 46px; line-height: 46px; background-color: #61c877; border-radius: 23px; -moz-border-radius: 23px; -webkit-border-radius: 23px;"
-                                      >
-                                          <i class="fa fa-facebook"></i>
-                                      </a>
-                                      <a
-                                          href="https://www.instagram.com/micasa18sm"
-                                          target="_blank"
-                                          class="gdlr-core-social-network-icon"
-                                          title="instagram"
-                                          style="color: #ffffff; width: 46px; height: 46px; line-height: 46px; background-color: #61c877; border-radius: 23px; -moz-border-radius: 23px; -webkit-border-radius: 23px;"
-                                      >
-                                          <i class="fa fa-instagram"></i>
-                                      </a>
-                                   
-                                  </span>
-                              </p>
-                          </div>
-                      </div>
-                      
-                  </div>
-              </div>
-          </div>
-          <div class="hotale-copyright-wrapper">
-              <div class="hotale-copyright-container hotale-container">
-                  <div class="hotale-copyright-text hotale-item-pdlr">© Copyright 2025 Mi casa 18, RNT. 232853. Todos los derechos reservados, desarrollado por Buckapi <a href="index.html#">Terminos y condiciones</a></div>
-              </div>
-          </div>
-      </footer>
-  </div>
+        <footer>
+            <div class="hotale-footer-wrapper">
+                <div class="hotale-footer-container hotale-container clearfix">
+                    <div class="hotale-footer-column hotale-item-pdlr hotale-column-20">
+                        <div id="block-25" class="widget widget_block widget_media_image hotale-widget">
+                            <figure class="wp-block-image size-full is-resized">
+                                <img loading="lazy" src="images/logo.png" alt="" class="wp-image-15952" width="126"
+                                    height="34" />
+                            </figure>
+                        </div>
+
+                        <div id="block-23" class="widget widget_block widget_text hotale-widget">
+                            <p>Mi casa 18 ofrece comodidad y confianza que expande la imaginación y cuna la espíritu.
+                            </p>
+                        </div>
+                        <div id="block-24" class="widget widget_block widget_media_image hotale-widget">
+                            <figure class="wp-block-image size-full">
+                                <img loading="lazy" width="383" height="137" src="upload/resort2-footer-bg.jpg" alt=""
+                                    class="wp-image-15944" />
+                            </figure>
+                        </div>
+                    </div>
+                    <div class="hotale-footer-column hotale-item-pdlr hotale-column-20">
+                        <div id="gdlr-core-custom-menu-widget-2"
+                            class="widget widget_gdlr-core-custom-menu-widget hotale-widget">
+                            <h1 class="hotale-widget-title">Enlaces</h1>
+                            <span class="clear"></span>
+                            <div class="menu-quick-links-container">
+                                <ul id="menu-quick-links"
+                                    class="gdlr-core-custom-menu-widget gdlr-core-menu-style-half">
+                                    <li class="menu-item hotale-normal-menu"><a href="index.html#">Política de
+                                            privacidad</a></li>
+                                    <li class="menu-item hotale-normal-menu"><a href="index.html#">FAQ</a></li>
+
+                                    <li class="menu-item hotale-normal-menu"><a href="contact.html">Contactanos</a></li>
+                                    <li class="menu-item hotale-normal-menu">
+                                        <a href="room-search.html">Reservar</a>
+                                    </li>
+                                    <li class="menu-item hotale-normal-menu">
+                                        <a href="room-grid-style-3.html">Lista de habitaciones</a>
+                                    </li>
+                                    <li class="menu-item hotale-normal-menu"><a href="about-us.html">Mi casa 18</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hotale-footer-column hotale-item-pdlr hotale-column-20">
+                        <div id="gdlr-core-newsletter-widget-2"
+                            class="widget widget_gdlr-core-newsletter-widget hotale-widget">
+                            <h1 class="hotale-widget-title">Siguénos Mi Casa 18</h1>
+                            <div id="block-8" class="widget widget_block hotale-widget">
+                                <p>
+                                    <span
+                                        class="gdlr-core-social-network-item gdlr-core-item-pdb gdlr-core-none-align gdlr-direction-horizontal"
+                                        style="padding-bottom: 0px; display: block;" id="gdlr-core-social-network-1">
+                                        <a href="https://web.facebook.com/profile.php?id=61555231991315#"
+                                            target="_blank" class="gdlr-core-social-network-icon" title="facebook"
+                                            style="color: #ffffff; width: 46px; height: 46px; line-height: 46px; background-color: #61c877; border-radius: 23px; -moz-border-radius: 23px; -webkit-border-radius: 23px;">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                        <a href="https://www.instagram.com/micasa18sm" target="_blank"
+                                            class="gdlr-core-social-network-icon" title="instagram"
+                                            style="color: #ffffff; width: 46px; height: 46px; line-height: 46px; background-color: #61c877; border-radius: 23px; -moz-border-radius: 23px; -webkit-border-radius: 23px;">
+                                            <i class="fa fa-instagram"></i>
+                                        </a>
+
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="hotale-copyright-wrapper">
+                <div class="hotale-copyright-container hotale-container">
+                    <div class="hotale-copyright-text hotale-item-pdlr">© Copyright 2025 Mi casa 18, RNT. 232853. Todos
+                        los derechos reservados, desarrollado por Buckapi <a href="index.html#">Terminos y
+                            condiciones</a></div>
+                </div>
+            </div>
+        </footer>
+    </div>
 </div>
