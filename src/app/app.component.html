@@ -189,18 +189,15 @@
                             <div class="menu-quick-links-container">
                                 <ul id="menu-quick-links"
                                     class="gdlr-core-custom-menu-widget gdlr-core-menu-style-half">
-                                    <li class="menu-item hotale-normal-menu"><a href="index.html#">Política de
+                                    <li class="menu-item hotale-normal-menu"><a (click)="globalService.activeRoute = 'privacy'">Política de
                                             privacidad</a></li>
-                                    <li class="menu-item hotale-normal-menu"><a href="index.html#">FAQ</a></li>
 
-                                    <li class="menu-item hotale-normal-menu"><a href="contact.html">Contactanos</a></li>
+                                    <li class="menu-item hotale-normal-menu"><a (click)="globalService.activeRoute = 'contact'">Contactanos</a></li>
+                                   
                                     <li class="menu-item hotale-normal-menu">
-                                        <a href="room-search.html">Reservar</a>
+                                        <a (click)="globalService.activeRoute = 'rooms'">Lista de habitaciones</a>
                                     </li>
-                                    <li class="menu-item hotale-normal-menu">
-                                        <a href="room-grid-style-3.html">Lista de habitaciones</a>
-                                    </li>
-                                    <li class="menu-item hotale-normal-menu"><a href="about-us.html">Mi casa 18</a></li>
+                                    <li class="menu-item hotale-normal-menu"><a (click)="globalService.activeRoute = 'about'">Mi casa 18</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -214,7 +211,7 @@
                                     <span
                                         class="gdlr-core-social-network-item gdlr-core-item-pdb gdlr-core-none-align gdlr-direction-horizontal"
                                         style="padding-bottom: 0px; display: block;" id="gdlr-core-social-network-1">
-                                        <a href="https://web.facebook.com/profile.php?id=61555231991315#"
+                                        <a href="https://web.facebook.com/profile.php?id=61555231991315"
                                             target="_blank" class="gdlr-core-social-network-icon" title="facebook"
                                             style="color: #ffffff; width: 46px; height: 46px; line-height: 46px; background-color: #61c877; border-radius: 23px; -moz-border-radius: 23px; -webkit-border-radius: 23px;">
                                             <i class="fa fa-facebook"></i>
@@ -223,6 +220,11 @@
                                             class="gdlr-core-social-network-icon" title="instagram"
                                             style="color: #ffffff; width: 46px; height: 46px; line-height: 46px; background-color: #61c877; border-radius: 23px; -moz-border-radius: 23px; -webkit-border-radius: 23px;">
                                             <i class="fa fa-instagram"></i>
+                                        </a>
+                                        <a href="https://www.tiktok.com/@mi.casa.18.sm" target="_blank"
+                                            class="gdlr-core-social-network-icon" title="tiktok"
+                                            style="color: #ffffff; width: 46px; height: 46px; line-height: 46px; background-color: #61c877; border-radius: 23px; -moz-border-radius: 23px; -webkit-border-radius: 23px;">
+                                            <i class="fa fa-tiktok"></i>
                                         </a>
 
                                     </span>
@@ -236,7 +238,7 @@
             <div class="hotale-copyright-wrapper">
                 <div class="hotale-copyright-container hotale-container">
                     <div class="hotale-copyright-text hotale-item-pdlr">© Copyright 2025 Mi casa 18, RNT. 232853. Todos
-                        los derechos reservados, desarrollado por Buckapi <a href="index.html#">Terminos y
+                        los derechos reservados, desarrollado por  <a href="https://buckapi.com" target="_blank">Buckapi</a>.  <a >Terminos y
                             condiciones</a></div>
                 </div>
             </div>
