@@ -2,6 +2,7 @@
 <div class="hotale-page-wrapper" id="hotale-page-wrapper">
 
     <div class="gdlr-core-page-builder-body">
+        <div class="main-grid">
         <div class="gdlr-core-pbf-sidebar-wrapper gdlr-core-sticky-sidebar gdlr-core-js" id="gdlr-core-sidebar-wrapper-1">
             <div class="gdlr-core-pbf-sidebar-container gdlr-core-line-height-0 clearfix gdlr-core-js gdlr-core-container">
                 <div class="gdlr-core-pbf-sidebar-content gdlr-core-column-45 gdlr-core-pbf-sidebar-padding gdlr-core-line-height gdlr-core-column-extend-left">
@@ -10,7 +11,7 @@
                             <div class="gdlr-core-pbf-column-content-margin gdlr-core-js">
                                 <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js">
                                     <div class="gdlr-core-pbf-element">
-                                        <div class="gdlr-core-image-item gdlr-core-item-pdb gdlr-core-center-align gdlr-core-item-pdlr">
+                                        <!-- <div class="gdlr-core-image-item gdlr-core-item-pdb gdlr-core-center-align gdlr-core-item-pdlr">
                                             <div *ngIf="globalService.selectedRoom" class="gdlr-core-image-item-wrap gdlr-core-media-image gdlr-core-image-item-style-round" 
                                             style="border-width: 0px; border-radius: 20px; -moz-border-radius: 20px; -webkit-border-radius: 20px;">
                                            <img src="{{globalService.selectedRoom.images[0] || 'upload/default-image.jpg'}}"
@@ -21,7 +22,34 @@
                                                 title="christopher-jolly-GqbU78bdJFM-unsplash"
                                            />
                                        </div>
-                                        </div>
+                                        </div> -->
+
+                                        <!-- <div *ngFor="let img of globalService.selectedRoom?.images; let i = index">
+                                            <img [src]="img" (click)="openLightbox(i)">
+                                          </div> -->
+                                <!-- En tu template (room-detail.component.html) -->
+   <!-- Sección Principal de Imagen -->
+   <div class="image-section">
+    <div class="image-container" 
+         *ngIf="globalService.selectedRoom && globalService.selectedRoom.images?.length"
+         (click)="openLightbox(0)"
+         role="button"
+         tabindex="0"
+         style="cursor: pointer;">
+      <img [src]="globalService.selectedRoom.images[0] || 'assets/images/default-room.jpg'"
+           alt="Imagen de la habitación"
+           class="responsive-image"/>
+    </div>
+    
+    <!-- Miniaturas opcionales -->
+    <div class="image-thumbnails" *ngIf="globalService.selectedRoom && globalService.selectedRoom.images.length > 1">
+      <div *ngFor="let img of globalService.selectedRoom.images; let i = index" 
+           class="thumbnail" 
+           (click)="openLightbox(i)">
+        <img [src]="img" alt="Miniatura {{i+1}}">
+      </div>
+    </div>
+  </div>
                                     </div>
                                 </div>
                             </div>
@@ -38,7 +66,15 @@
                                                 <div class="tourmaster-head">
                                                     <span class="tourmaster-label">Precio</span>
                                                     <!-- <span class="tourmaster-price-discount">COP {{globalService.selectedRoom?.price+(0.20*globalService.selectedRoom?.price)}}</span> -->
-                                                    <span class="tourmaster-price">$COP {{globalService.selectedRoom?.price | number: '1.0-0'   }}</span>
+                                                    <span class="tourmaster-price">
+                                                        <span style="font-size: 18px; font-weight: 900;">
+                                                            $
+                                                        </span>
+                                                        {{globalService.selectedRoom?.price | number: '1.0-0'}} 
+                                                        <span style="font-size: 18px; font-weight: 900;">
+                                                            COP
+                                                        </span>
+                                                    </span>
                                                 </div>
                                                 <div class="tourmaster-tail">por noche</div>
                                             </div>
@@ -339,6 +375,15 @@
                                     <div class="gdlr-core-pbf-element">
                                         <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr" style="padding-bottom: 40px;">
                                             <div class="gdlr-core-title-item-title-wrap">
+<h3 class="gdlr-core-title-item-title gdlr-core-skin-title class-test" style="font-size: 25px; font-weight: 500; letter-spacing: 0px; text-transform: none;">
+    Horas de check-in y check-out
+</h3>
+<p>
+    Check-in: 15:00 (3:00 PM)
+    <br />
+    Check-out: 12:00 (12:00 PM)
+</p>
+
                                                 <h3 class="gdlr-core-title-item-title gdlr-core-skin-title class-test" style="font-size: 25px; font-weight: 500; letter-spacing: 0px; text-transform: none;">
                                                     NORMAS DEL HOSTAL:
                                                 </h3>
@@ -348,23 +393,19 @@
                                                 <li>NO SE PUEDE CELEBRAR FIESTAS Y EVENTOS EN EL HOTEL.</li>
                                                 <li>SE DEBE DEJAR LA LLAVE EN LA RECEPCIÓN.</li>
                                                 <li>SE DEBE CANCELAR EL VALOR DE LA RESERVA EN LA RECEPCIÓN AL LLEGAR AL HOTEL.</li>
-                                                <p>
-                                                    Horas de check-in y check-out
-                                                    <br />
-                                                    Entrada 15:00
-                                                    <br />
-                                                    Salida 12:00 PM
-                                                </p>
+                                          
                                                 <h3 class="gdlr-core-title-item-title gdlr-core-skin-title class-test" style="font-size: 25px; font-weight: 500; letter-spacing: 0px; text-transform: none;">
+                                                    <br />
                                                     A tener en cuenta...
                                                     <br />
                                                     Condiciones adicionales
                                                     </h3>
                                                     <span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span>
-                                                    <p>Informa a Mi casa 18 GUESTHOUSE con antelación de tu hora prevista de llegada. Para ello, puedes utilizar el apartado de peticiones especiales al hacer la reserva o ponerse en contacto directamente con el alojamiento. Los datos de contacto aparecen en la confirmación de la reserva.
-                                                        Los huéspedes deberán mostrar un documento de identidad válido y una tarjeta de crédito al realizar el registro de entrada. Ten en cuenta que todas las peticiones especiales están sujetas a disponibilidad y pueden comportar suplementos.
-                                                        Las personas menores de 18 años solo pueden alojarse si van acompañadas de alguno de sus progenitores o tutores legales.  
-                                                    </p>
+                                                    <ul>
+                                                        <li>Informa a Mi casa 18 GUESTHOUSE con antelación de tu hora prevista de llegada. Para ello, puedes utilizar el apartado de peticiones especiales al hacer la reserva o ponerse en contacto directamente con el alojamiento. Los datos de contacto aparecen en la confirmación de la reserva.</li>
+                                                        <li>Los huéspedes deberán mostrar un documento de identidad válido y una tarjeta de crédito al realizar el registro de entrada. Ten en cuenta que todas las peticiones especiales están sujetas a disponibilidad y pueden comportar suplementos.</li>
+                                                        <li>Las personas menores de 18 años solo pueden alojarse si van acompañadas de alguno de sus progenitores o tutores legales.</li>
+                                                    </ul>
                                             </div>
                                         </div>
                                     </div>
@@ -377,6 +418,7 @@
                 </div>
                <app-forms></app-forms>
             </div>
+        </div>
         </div>
    
         

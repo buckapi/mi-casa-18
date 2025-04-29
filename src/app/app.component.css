@@ -118,3 +118,35 @@
 .icon_lock-open_alt {
   margin-right: 5px;
 }
+/* Estilos para el botón de confirmar (negro con letras blancas) */
+.swal2-container .swal2-confirm.swal-confirm-button {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border: none !important;
+  padding: 12px 24px !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  font-size: 14px !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Estilos para el botón de cancelar (blanco con borde negro y letras negras) */
+.swal2-container .swal2-cancel.swal-cancel-button {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 2px solid #000000 !important;
+  padding: 12px 24px !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  font-size: 14px !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Hover effects */
+.swal2-container .swal2-confirm.swal-confirm-button:hover {
+  background-color: #333333 !important;
+}
+
+.swal2-container .swal2-cancel.swal-cancel-button:hover {
+  background-color: #f0f0f0 !important;
+}

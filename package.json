@@ -19,8 +19,10 @@
     "@angular/platform-browser-dynamic": "^19.1.0",
     "@angular/router": "^19.1.0",
     "jquery-ui-dist": "^1.13.3",
+    "ngx-lightbox": "^3.0.0",
     "pocketbase": "^0.25.2",
     "rxjs": "~7.8.0",
+    "sweetalert2": "^11.19.1",
     "swiper": "^11.2.6",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"

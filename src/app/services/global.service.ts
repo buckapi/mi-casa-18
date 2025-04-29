@@ -4,14 +4,16 @@ import { RealtimeRoomsService } from './realtime-rooms.service';
 import {ROOM_TYPES,  RoomType } from '../constants/hostel.constants';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { CONTACT_INFO } from '../constants/hostel.constants';
-import { Observable } from 'rxjs';
+import { Observable,Subject } from 'rxjs';
 import { HostelService } from './hostel.service';
 @Injectable({
   providedIn: 'root'
 })
 export class GlobalService {
   searchTerm: string = "";
-  selectedRoom: Room | null = null;
+  public _selectedRoom: Room | null = null;
+
+  // selectedRoom: Room | null = null;
   room: Room | null = null;
   activeRoute: string = "home";
   dashboardOption: string = "";
@@ -22,6 +24,15 @@ export class GlobalService {
   isModalOpen = false;
   rooms$: Observable<Room[]>;
   rooms: Room[] = []; 
+  roomChanged = new Subject<void>(); // Subject para notificar cambios
+  get selectedRoom(): Room | null {
+    return this._selectedRoom;
+  }
+
+  set selectedRoom(room: Room | null) {
+    this._selectedRoom = room;
+    this.roomChanged.next(); // Notificar cuando cambia
+  }
   constructor(
     private sanitizer: DomSanitizer,
     public hostelService: HostelService,
@@ -56,5 +67,11 @@ Gracias!`;
 
   getRoomType(id: string): RoomType | null {
     return Object.values(ROOM_TYPES).find(type => type.id === id) || null;
+  }
+  scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
 }

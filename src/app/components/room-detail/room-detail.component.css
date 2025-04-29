@@ -1,0 +1,111 @@
+/* CSS Responsivo */
+.hotale-page-wrapper {
+    box-sizing: border-box;
+    max-width: 1920px;
+    margin: 0 auto;
+  }
+  
+  .main-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+  }
+  
+  .image-section {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.25rem;
+    aspect-ratio: 16/9;
+  }
+  
+  .image-container {
+    height: 100%;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .responsive-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .details-section {
+    padding: 1.5rem;
+    background: #ffffff;
+    border-radius: 1.25rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .details-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  
+  /* Media Queries para diferentes breakpoints */
+  @media (hover: hover) {
+    .image-container:hover .responsive-image {
+      transform: scale(1.05);
+    }
+  }
+  
+  @media (max-width: 1200px) {
+    .main-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .image-section {
+      aspect-ratio: 21/9;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .details-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .image-section {
+      aspect-ratio: 1;
+      border-radius: 1rem;
+    }
+    
+    .details-section {
+      padding: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .main-grid {
+      gap: 1rem;
+      padding: 0.5rem;
+    }
+    
+    .image-section {
+      border-radius: 0.75rem;
+    }
+  }
+  
+  /* Optimización para formulario */
+  .booking-form {
+    position: sticky;
+    top: 1rem;
+    align-self: start;
+  }
+  /* En tu archivo CSS */
+.lightbox-backdrop {
+  background-color: rgba(0, 0, 0, 0.9) !important;
+}
+
+.lightbox-nav-btn {
+  padding: 20px !important;
+}
+
+.lightbox-image-caption {
+  font-size: 1.2em;
+  text-align: center;
+  padding: 15px;
+}

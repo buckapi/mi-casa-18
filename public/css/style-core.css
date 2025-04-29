@@ -8701,11 +8701,13 @@
 #gdlr-core-column-20:hover .gdlr-core-pbf-column-content-margin .gdlr-core-pbf-background-wrap {
 }
 #gdlr-core-social-network-1.gdlr-core-social-network-item .gdlr-core-social-network-icon:hover {
-    background-color: #ff7c89 !important;
+    background-color: #000000 !important;
 }
 #gdlr-core-social-network-1.gdlr-core-social-network-item .gdlr-core-social-network-icon:hover {
     color: #ffffff !important;
 }
+
+:root {
 --wp--preset--color--black: #000000;
 --wp--preset--color--cyan-bluish-gray: #abb8c3;
 --wp--preset--color--white: #ffffff;
@@ -8742,7 +8744,7 @@
 --wp--preset--font-size--medium: 20px;
 --wp--preset--font-size--large: 36px;
 --wp--preset--font-size--x-large: 42px;
-}
+}	
 .has-black-color {
 color: var(--wp--preset--color--black) !important;
 }

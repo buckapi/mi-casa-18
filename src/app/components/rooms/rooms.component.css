@@ -10,3 +10,45 @@
 .tourmaster-room-grid2:hover {
     transform: translateY(-10px);
 }
+.room-image-container {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.5s ease; /* Nueva transición para el contenedor */
+  }
+  
+  /* Efecto de destello */
+  .room-image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg);
+    z-index: 1;
+    transition: all 0.6s;
+  }
+  
+  /* Efecto combinado al hacer hover */
+  .room-image-container:hover {
+    transform: scale(1.05); /* Zoom general del contenedor */
+  }
+  
+  .room-image-container:hover::before {
+    left: 150%;
+  }
+  
+  .room-image-container img {
+    transition: all 0.5s cubic-bezier(0.25, 0.45, 0.45, 0.95); /* Transición suavizada */
+    will-change: transform; /* Optimización para animaciones */
+  }
+  
+  .room-image-container:hover img {
+    transform: scale(1.1); /* Zoom más pronunciado en la imagen */
+  }

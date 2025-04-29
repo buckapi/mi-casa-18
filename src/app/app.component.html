@@ -20,19 +20,20 @@
                     <div class="hotale-mm-menu-wrap hotale-navigation-font" id="hotale-mobile-menu" data-slide="right">
                         <ul id="menu-main-navigation" class="m-menu">
                             <li class="menu-item menu-item-home current-menu-item  menu-item-has-children">
-                                <a (click)="globalService.activeRoute = 'home'" aria-current="page">Inicio</a>
+                                <a (click)="globalService.activeRoute = 'home' ; globalService.scrollToTop()" aria-current="page">Inicio</a>
 
                             </li>
                             <li class="menu-item menu-item-has-children">
-                                <a (click)="globalService.activeRoute = 'about'" *ngIf="!authService.isAuthenticated()">Mi Casa 18</a>
+                                <a (click)="globalService.activeRoute = 'about' ; globalService.scrollToTop()" *ngIf="!authService.isAuthenticated()">Mi Casa 18</a>
 
                             </li>
                             <li class="menu-item menu-item-has-children">
-                                <a (click)="globalService.activeRoute = 'rooms'" *ngIf="!authService.isAuthenticated()">Habitaciones</a>
+                                <a (click)="globalService.activeRoute = 'rooms' ; globalService.scrollToTop()" *ngIf="!authService.isAuthenticated()">Habitaciones</a>
 
                             </li>
                             <li class="menu-item menu-item-has-children">
-                                <a (click)="globalService.activeRoute = 'contact'" *ngIf="!authService.isAuthenticated()">Contacto</a>
+    this.globalService.scrollToTop();
+                                <a (click)="globalService.activeRoute = 'contact'; globalService.scrollToTop()" *ngIf="!authService.isAuthenticated()">Contacto</a>
 
                             </li>
 
@@ -70,18 +71,18 @@
 
                                 </li>
                                 <li class="menu-item menu-item-has-children hotale-normal-menu">
-                                    <a class="sf-with-ul-pre" (click)="globalService.activeRoute = 'about'" *ngIf="!authService.isAuthenticated()">Mi Casa
+                                    <a class="sf-with-ul-pre" (click)="globalService.activeRoute = 'about' ; globalService.scrollToTop()" *ngIf="!authService.isAuthenticated()">Mi Casa
                                         18</a>
 
                                 </li>
                                 <li class="menu-item menu-item-has-children hotale-normal-menu">
                                     <a class="sf-with-ul-pre"
-                                        (click)="globalService.activeRoute = 'rooms'">Habitaciones</a>
+                                        (click)="globalService.activeRoute = 'rooms' ; globalService.scrollToTop()">Habitaciones</a>
 
                                 </li>
 
                                 <li class="menu-item menu-item-has-children">
-                                    <a (click)="globalService.activeRoute = 'contact'" *ngIf="!authService.isAuthenticated()">Contacto</a>
+                                    <a (click)="globalService.activeRoute = 'contact' ; globalService.scrollToTop()" *ngIf="!authService.isAuthenticated()">Contacto</a>
 
                                 </li>
                             </ul>
@@ -104,7 +105,11 @@
                                     <span class="tourmaster-text">Cerrar Sesión</span>
                                   </span>
                                 </div>
-                                
+                                <div
+                                class="tourmaster-user-top-bar tourmaster-guest tourmaster-style-2"
+                                data-redirect="index.html"
+                                data-ajax-url="#"
+                            >
                                 <!-- Mostrar botón de login y modal si no está autenticado -->
                                 <div *ngIf="!authService.isAuthenticated()">
                                   <span class="tourmaster-user-top-bar-login" data-tmlb="login">
@@ -118,7 +123,7 @@
                                       <i class="tourmaster-lightbox-close icon_close" (click)="closeLoginModal()"></i>
                                     </div>
                                     <div class="tourmaster-lightbox-content">
-                                      <form (submit)="login($event)" class="tourmaster-login-form">
+                                      <form (submit)="login($event)" class="tourmaster-login-form tourmaster-form-field tourmaster-with-border">
                                         <div class="tourmaster-login-form-fields clearfix">
                                           <p class="tourmaster-login-user">
                                             <label>Usuario</label>
@@ -134,14 +139,18 @@
                                           {{ errorMessage }}
                                         </div>
                                         
-                                        <p class="tourmaster-login-submit">
+                                        <!-- <p class="tourmaster-login-submit">
                                           <button type="submit" class="tourmaster-button" [disabled]="loading">
                                             {{ loading ? 'Iniciando...' : 'Ingresar' }}
                                           </button>
+                                        </p> -->
+                                        <p class="tourmaster-login-submit">
+                                            <input (click)="login($event)" type="submit" name="wp-submit" class="tourmaster-button" value="{{ loading ? 'Iniciando...' : 'Ingresar' }}" />
                                         </p>
                                       </form>
                                     </div>
                                   </div>
+                                </div>
                                 </div>
                               </div>
                         </div>
@@ -189,15 +198,15 @@
                             <div class="menu-quick-links-container">
                                 <ul id="menu-quick-links"
                                     class="gdlr-core-custom-menu-widget gdlr-core-menu-style-half">
-                                    <li class="menu-item hotale-normal-menu"><a (click)="globalService.activeRoute = 'privacy'">Política de
+                                    <li class="menu-item hotale-normal-menu"><a (click)="globalService.activeRoute = 'privacy'; globalService.scrollToTop()" style="cursor: pointer;">Política de
                                             privacidad</a></li>
 
-                                    <li class="menu-item hotale-normal-menu"><a (click)="globalService.activeRoute = 'contact'">Contactanos</a></li>
+                                    <li class="menu-item hotale-normal-menu"><a (click)="globalService.activeRoute = 'contact'; globalService.scrollToTop()" style="cursor: pointer;">Contactanos</a></li>
                                    
                                     <li class="menu-item hotale-normal-menu">
-                                        <a (click)="globalService.activeRoute = 'rooms'">Lista de habitaciones</a>
+                                        <a (click)="globalService.activeRoute = 'rooms'; globalService.scrollToTop()" style="cursor: pointer;">Lista de habitaciones</a>
                                     </li>
-                                    <li class="menu-item hotale-normal-menu"><a (click)="globalService.activeRoute = 'about'">Mi casa 18</a></li>
+                                    <li class="menu-item hotale-normal-menu"><a (click)="globalService.activeRoute = 'about'; globalService.scrollToTop()" style="cursor: pointer;">Mi casa 18</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -221,11 +230,11 @@
                                             style="color: #ffffff; width: 46px; height: 46px; line-height: 46px; background-color: #61c877; border-radius: 23px; -moz-border-radius: 23px; -webkit-border-radius: 23px;">
                                             <i class="fa fa-instagram"></i>
                                         </a>
-                                        <a href="https://www.tiktok.com/@mi.casa.18.sm" target="_blank"
+                                        <!-- <a href="https://www.tiktok.com/@mi.casa.18.sm" target="_blank"
                                             class="gdlr-core-social-network-icon" title="tiktok"
                                             style="color: #ffffff; width: 46px; height: 46px; line-height: 46px; background-color: #61c877; border-radius: 23px; -moz-border-radius: 23px; -webkit-border-radius: 23px;">
                                             <i class="fa fa-tiktok"></i>
-                                        </a>
+                                        </a> -->
 
                                     </span>
                                 </p>

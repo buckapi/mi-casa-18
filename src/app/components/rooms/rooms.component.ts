@@ -28,6 +28,8 @@ export class RoomsComponent {
   }
 
   goToRoomDetail(room: Room) {
+    this.globalService.scrollToTop();
+
     this.globalService.activeRoute = 'room-detail';
     this.globalService.selectedRoom = room;
   }

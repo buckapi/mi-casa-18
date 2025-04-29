@@ -10,6 +10,7 @@ import { RoomDetailComponent } from "./components/room-detail/room-detail.compon
 import { ContactComponent } from './components/contact/contact.component';
 import { AuthService } from './services/auth.service';
 import { FormsModule } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-root',
@@ -124,11 +125,77 @@ export class AppComponent implements OnInit {
     }
   }
   logout() {
-    this.authService.logout();
-    // Recargar la página para asegurar que todo estado se reinicie
-    window.location.reload();
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¿Realmente deseas cerrar sesión?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, cerrar sesión',
+      cancelButtonText: 'Cancelar',
+      buttonsStyling: false,
+      customClass: {
+        confirmButton: 'swal-confirm-button',
+        cancelButton: 'swal-cancel-button'
+      },
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.authService.logout();
+        window.location.reload();
+      }
+    });
+  
+    // Actualizar estilos después de que el modal esté visible
+    setTimeout(() => {
+      const confirmButton = document.querySelector('.swal2-confirm') as HTMLElement;
+      const cancelButton = document.querySelector('.swal2-cancel') as HTMLElement;
+      
+      if (confirmButton) {
+        confirmButton.style.backgroundColor = '#000000';
+        confirmButton.style.color = '#ffffff';
+        confirmButton.style.border = '2px solid #000000';
+        confirmButton.style.padding = '12px 24px';
+        confirmButton.style.borderRadius = '4px';
+        confirmButton.style.cursor = 'pointer';
+        confirmButton.style.fontSize = '14px';
+        confirmButton.style.marginRight = '15px';
+        confirmButton.style.marginLeft = '15px';
+        
+        // Agregar efecto hover
+        confirmButton.addEventListener('mouseenter', () => {
+          confirmButton.style.backgroundColor = '#ffffff';
+          confirmButton.style.color = '#000000';
+        });
+        
+        confirmButton.addEventListener('mouseleave', () => {
+          confirmButton.style.backgroundColor = '#000000';
+          confirmButton.style.color = '#ffffff';
+        });
+      }
+  
+      if (cancelButton) {
+        cancelButton.style.backgroundColor = '#ffffff';
+        cancelButton.style.color = '#000000';
+        cancelButton.style.border = '2px solid #000000';
+        cancelButton.style.padding = '12px 24px';
+        cancelButton.style.borderRadius = '4px';
+        cancelButton.style.cursor = 'pointer';
+        cancelButton.style.fontSize = '14px';
+        cancelButton.style.marginLeft = '15px';
+        
+        // Agregar efecto hover
+        cancelButton.addEventListener('mouseenter', () => {
+          cancelButton.style.backgroundColor = '#000000';
+          cancelButton.style.color = '#ffffff';
+        });
+        
+        cancelButton.addEventListener('mouseleave', () => {
+          cancelButton.style.backgroundColor = '#ffffff';
+          cancelButton.style.color = '#000000';
+        });
+      }
+    }, 100);
   }
- 
   public closeLoginModal() {
     // Simular clic en el botón de cerrar
     const closeButton = document.querySelector('.tourmaster-lightbox-close') as HTMLElement;
