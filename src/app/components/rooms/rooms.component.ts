@@ -12,6 +12,7 @@ import { GlobalService } from '../../services/global.service';
 })
 export class RoomsComponent {
   rooms: Room[] = [];
+  index: number = 0;
 
   constructor(private roomService: RoomService,
     public globalService: GlobalService
@@ -19,6 +20,7 @@ export class RoomsComponent {
   async ngOnInit(): Promise<void> {
     try {
       this.rooms = await this.roomService.getRooms();
+      this.globalService.rooms = this.rooms; // <-- Esta línea es importante
       console.log('Rooms loaded:', this.rooms);
     } catch (error) {
       console.error('Error loading rooms:', error);
@@ -27,11 +29,12 @@ export class RoomsComponent {
     }
   }
 
-  goToRoomDetail(room: Room) {
+  goToRoomDetail(room: Room, index: number) {
     this.globalService.scrollToTop();
-
     this.globalService.activeRoute = 'room-detail';
     this.globalService.selectedRoom = room;
+    this.globalService.currentRoomIndex = index; // Guardar el índice actual
+    this.index = index;
   }
 
   loading: boolean = true;

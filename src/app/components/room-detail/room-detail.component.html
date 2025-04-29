@@ -60,21 +60,64 @@
                                 <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js">
                                     <div class="gdlr-core-pbf-element">
                                         <div class="tourmaster-room-title-item tourmaster-item-mglr tourmaster-item-pdb clearfix" style="padding-bottom: 35px;">
-                                            <h3 class="tourmaster-room-title-item-title">{{globalService.selectedRoom?.number}}</h3>
+                                            <h3 class="tourmaster-room-title-item-title">
+                                                <button class="nav-arrow" 
+                                                        (click)="navigateRoom('prev')" 
+                                                        [disabled]="isFirstRoom"
+                                                        aria-label="Habitación anterior">
+                                                  ‹
+                                                </button>
+                                                
+                                                <span *ngIf="editingField !== 'number'; else editNumber" class="editable-field">
+                                                    {{globalService.selectedRoom?.number}}
+                                                    <span class="icon-actions" *ngIf="isLoggedIn">
+                                                      <svg class="icon" viewBox="0 0 24 24" (click)="startEditing('number', globalService.selectedRoom?.number)">
+                                                        <path stroke="currentColor" stroke-width="1.5" d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4Z"/>
+                                                      </svg>
+                                                    </span>
+                                                  </span>
+                                                <ng-template #editNumber>
+                                                  <input type="text" 
+                                                         [(ngModel)]="tempValue"
+                                                         (keyup.enter)="saveRoomField('number')"
+                                                         (blur)="saveRoomField('number')"
+                                                         autofocus
+                                                         class="editable-input">
+                                                  <div class="edit-controls">
+                                                    <button (click)="saveRoomField('number')">💾</button>
+                                                    <button (click)="cancelEditing()">❌</button>
+                                                  </div>
+                                                </ng-template>
+                                              
+                                                <button class="nav-arrow" 
+                                                        (click)="navigateRoom('next')" 
+                                                        [disabled]="isLastRoom"
+                                                        aria-label="Siguiente habitación">
+                                                  ›
+                                                </button>
+                                              </h3>
                                             <div class="tourmaster-room-title-item-caption">Características de la habitacion</div>
                                             <div class="tourmaster-room-title-price">
                                                 <div class="tourmaster-head">
                                                     <span class="tourmaster-label">Precio</span>
                                                     <!-- <span class="tourmaster-price-discount">COP {{globalService.selectedRoom?.price+(0.20*globalService.selectedRoom?.price)}}</span> -->
                                                     <span class="tourmaster-price">
-                                                        <span style="font-size: 18px; font-weight: 900;">
-                                                            $
-                                                        </span>
-                                                        {{globalService.selectedRoom?.price | number: '1.0-0'}} 
-                                                        <span style="font-size: 18px; font-weight: 900;">
-                                                            COP
-                                                        </span>
-                                                    </span>
+                                                        <span *ngIf="editingField !== 'price'; else editPrice" class="editable-field">
+                                                            {{globalService.selectedRoom?.price | number: '1.0-0'}}
+                                                            <span class="icon-actions" *ngIf="isLoggedIn">
+                                                              <svg class="icon" viewBox="0 0 24 24" (click)="startEditing('price', globalService.selectedRoom?.price)">
+                                                                <path stroke="currentColor" stroke-width="1.5" d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4Z"/>
+                                                              </svg>
+                                                            </span>
+                                                          </span>
+                                                        <ng-template #editPrice>
+                                                          <input type="number" [(ngModel)]="tempValue" 
+                                                                 (keyup.enter)="saveRoomField('price')"
+                                                                 (blur)="saveRoomField('price')" autofocus>
+                                                          <button (click)="saveRoomField('price')">💾</button>
+                                                          <button (click)="cancelEditing()">❌</button>
+                                                        </ng-template>
+                                                      </span>
                                                 </div>
                                                 <div class="tourmaster-tail">por noche</div>
                                             </div>
@@ -154,10 +197,27 @@
                                         <div class="gdlr-core-text-box-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-left-align">
                                             <div class="gdlr-core-text-box-item-content" style="font-size: 18px; text-transform: none;">
                                                 <p>
-                                                    {{globalService.selectedRoom?.description}}
+                                                    <span *ngIf="editingField !== 'description'; else editDescription" class="editable-field">
+                                                        {{globalService.selectedRoom?.description}}
+                                                        <span class="icon-actions" *ngIf="isLoggedIn">
+                                                          <svg class="icon" viewBox="0 0 24 24" (click)="startEditing('description', globalService.selectedRoom?.description)">
+                                                            <path stroke="currentColor" stroke-width="1.5" d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4Z"/>
+                                                          </svg>
+                                                        </span>
+                                                      </span>
+                                                  <ng-template #editDescription>
+                                                    <textarea [(ngModel)]="tempValue"
+                                                              (keyup.enter)="saveRoomField('description')"
+                                                              (blur)="saveRoomField('description')"
+                                                              rows="4"
+                                                              autofocus></textarea>
+                                                    <div class="edit-controls">
+                                                      <button (click)="saveRoomField('description')">💾 Guardar</button>
+                                                      <button (click)="cancelEditing()">❌ Cancelar</button>
+                                                    </div>
+                                                  </ng-template>
                                                 </p>
-                                              
-                                            </div>
+                                              </div>
                                         </div>
                                     </div>
                                 </div>
@@ -372,43 +432,7 @@
                             <div class="gdlr-core-pbf-column-content-margin gdlr-core-js" style="margin: 0px 0px 0px 0px; padding: 45px 0px 0px 0px;">
                                 <div class="gdlr-core-pbf-background-wrap"></div>
                                 <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js">
-                                    <div class="gdlr-core-pbf-element">
-                                        <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr" style="padding-bottom: 40px;">
-                                            <div class="gdlr-core-title-item-title-wrap">
-<h3 class="gdlr-core-title-item-title gdlr-core-skin-title class-test" style="font-size: 25px; font-weight: 500; letter-spacing: 0px; text-transform: none;">
-    Horas de check-in y check-out
-</h3>
-<p>
-    Check-in: 15:00 (3:00 PM)
-    <br />
-    Check-out: 12:00 (12:00 PM)
-</p>
-
-                                                <h3 class="gdlr-core-title-item-title gdlr-core-skin-title class-test" style="font-size: 25px; font-weight: 500; letter-spacing: 0px; text-transform: none;">
-                                                    NORMAS DEL HOSTAL:
-                                                </h3>
-                                                <span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span>
-                                                <li>NO SE PUEDE FUMAR EN LAS HABITACIONES.</li>
-                                                <li>NO SE PUEDE INGERIR ALIMENTOS EN LAS HABITACIONES.</li>
-                                                <li>NO SE PUEDE CELEBRAR FIESTAS Y EVENTOS EN EL HOTEL.</li>
-                                                <li>SE DEBE DEJAR LA LLAVE EN LA RECEPCIÓN.</li>
-                                                <li>SE DEBE CANCELAR EL VALOR DE LA RESERVA EN LA RECEPCIÓN AL LLEGAR AL HOTEL.</li>
-                                          
-                                                <h3 class="gdlr-core-title-item-title gdlr-core-skin-title class-test" style="font-size: 25px; font-weight: 500; letter-spacing: 0px; text-transform: none;">
-                                                    <br />
-                                                    A tener en cuenta...
-                                                    <br />
-                                                    Condiciones adicionales
-                                                    </h3>
-                                                    <span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span>
-                                                    <ul>
-                                                        <li>Informa a Mi casa 18 GUESTHOUSE con antelación de tu hora prevista de llegada. Para ello, puedes utilizar el apartado de peticiones especiales al hacer la reserva o ponerse en contacto directamente con el alojamiento. Los datos de contacto aparecen en la confirmación de la reserva.</li>
-                                                        <li>Los huéspedes deberán mostrar un documento de identidad válido y una tarjeta de crédito al realizar el registro de entrada. Ten en cuenta que todas las peticiones especiales están sujetas a disponibilidad y pueden comportar suplementos.</li>
-                                                        <li>Las personas menores de 18 años solo pueden alojarse si van acompañadas de alguno de sus progenitores o tutores legales.</li>
-                                                    </ul>
-                                            </div>
-                                        </div>
-                                    </div>
+                               <app-additional-info></app-additional-info>
                                 </div>
                             </div>
                         </div>

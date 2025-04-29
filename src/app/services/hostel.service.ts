@@ -40,4 +40,12 @@ export class HostelService {
   getHostelInfo() {
     return this.pb.collection('hostel_info').getFirstListItem('');
   }
+  updateHostelInfo(id: string, data: any): Promise<any> {
+    return this.pb.collection('hostel_info').update(id, data);
+  }
+
+  async updateRoomField(roomId: string, field: string, value: any): Promise<Room> {
+    const updateData = { [field]: value };
+    return this.pb.collection('rooms').update(roomId, updateData);
+  }
 }

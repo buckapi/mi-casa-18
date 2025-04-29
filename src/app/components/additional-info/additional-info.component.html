@@ -1,0 +1,279 @@
+<div class="gdlr-core-pbf-element">
+    <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr" style="padding-bottom: 40px;">
+      <div class="gdlr-core-title-item-title-wrap">
+        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title class-test" style="font-size: 25px; font-weight: 500; letter-spacing: 0px; text-transform: none;">
+          Horas de check-in y check-out
+        </h3>
+        <div *ngIf="hostelInfo">
+          <div class="schedule-container">
+            <!-- Check-in Time -->
+            <div class="schedule-item">
+              <span>Check-in: </span>
+              <span *ngIf="editingScheduleField !== 'checkIn.time'; else editCheckInTime">
+                {{ hostelInfo.schedule.checkIn.time }}
+                <span *ngIf="isLoggedIn" class="icon-actions">
+                  <svg class="icon" viewBox="0 0 24 24" (click)="startEditingSchedule('checkIn.time')">
+                    <path stroke="currentColor" stroke-width="1.5" d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4Z"/>
+                  </svg>
+                </span>
+              </span>
+              <ng-template #editCheckInTime>
+                <input type="text" 
+                       [(ngModel)]="tempValue"
+                       (keyup.enter)="saveScheduleField('checkIn.time')"
+                       (blur)="saveScheduleField('checkIn.time')"
+                       style="width: 60px"
+                       autofocus>
+                <span class="edit-actions">
+                  <button (click)="saveScheduleField('checkIn.time')">
+                    <svg viewBox="0 0 24 24" width="14">
+                      <path stroke="currentColor" stroke-width="1.5" d="M5 13l4 4L19 7"/>
+                    </svg>
+                  </button>
+                  <button (click)="resetEditingState()">
+                    <svg viewBox="0 0 24 24" width="14">
+                      <path stroke="currentColor" stroke-width="1.5" d="M18 6L6 18M6 6l12 12"/>
+                    </svg>
+                  </button>
+                </span>
+              </ng-template>
+            
+              <!-- Check-in Description -->
+              <span>(
+                <span *ngIf="editingScheduleField !== 'checkIn.description'; else editCheckInDesc">
+                  {{ hostelInfo.schedule.checkIn.description }}
+                  <span *ngIf="isLoggedIn" class="icon-actions">
+                    <svg class="icon" viewBox="0 0 24 24" (click)="startEditingSchedule('checkIn.description')">
+                      <path stroke="currentColor" stroke-width="1.5" d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4Z"/>
+                    </svg>
+                  </span>
+                </span>
+                <ng-template #editCheckInDesc>
+                  <input type="text" 
+                         [(ngModel)]="tempValue"
+                         (keyup.enter)="saveScheduleField('checkIn.description')"
+                         (blur)="saveScheduleField('checkIn.description')"
+                         style="width: 100px"
+                         autofocus>
+                  <span class="edit-actions">
+                    <button (click)="saveScheduleField('checkIn.description')">
+                      <svg viewBox="0 0 24 24" width="14">
+                        <path stroke="currentColor" stroke-width="1.5" d="M5 13l4 4L19 7"/>
+                      </svg>
+                    </button>
+                    <button (click)="resetEditingState()">
+                      <svg viewBox="0 0 24 24" width="14">
+                        <path stroke="currentColor" stroke-width="1.5" d="M18 6L6 18M6 6l12 12"/>
+                      </svg>
+                    </button>
+                  </span>
+                </ng-template>
+              )</span>
+            </div>
+            
+            <!-- Check-out Time -->
+            <div class="schedule-item">
+              <span>Check-out: </span>
+              <span *ngIf="editingScheduleField !== 'checkOut.time'; else editCheckOutTime">
+                {{ hostelInfo.schedule.checkOut.time }}
+                <span *ngIf="isLoggedIn" class="icon-actions">
+                  <svg class="icon" viewBox="0 0 24 24" (click)="startEditingSchedule('checkOut.time')">
+                    <path stroke="currentColor" stroke-width="1.5" d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4Z"/>
+                  </svg>
+                </span>
+              </span>
+              <ng-template #editCheckOutTime>
+                <input type="text" 
+                       [(ngModel)]="tempValue"
+                       (keyup.enter)="saveScheduleField('checkOut.time')"
+                       (blur)="saveScheduleField('checkOut.time')"
+                       style="width: 60px"
+                       autofocus>
+                <span class="edit-actions">
+                  <button (click)="saveScheduleField('checkOut.time')">
+                    <svg viewBox="0 0 24 24" width="14">
+                      <path stroke="currentColor" stroke-width="1.5" d="M5 13l4 4L19 7"/>
+                    </svg>
+                  </button>
+                  <button (click)="resetEditingState()">
+                    <svg viewBox="0 0 24 24" width="14">
+                      <path stroke="currentColor" stroke-width="1.5" d="M18 6L6 18M6 6l12 12"/>
+                    </svg>
+                  </button>
+                </span>
+              </ng-template>
+            
+              <!-- Check-out Description -->
+              <span>(
+                <span *ngIf="editingScheduleField !== 'checkOut.description'; else editCheckOutDesc">
+                  {{ hostelInfo.schedule.checkOut.description }}
+                  <span *ngIf="isLoggedIn" class="icon-actions">
+                    <svg class="icon" viewBox="0 0 24 24" (click)="startEditingSchedule('checkOut.description')">
+                      <path stroke="currentColor" stroke-width="1.5" d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4Z"/>
+                    </svg>
+                  </span>
+                </span>
+                <ng-template #editCheckOutDesc>
+                  <input type="text" 
+                         [(ngModel)]="tempValue"
+                         (keyup.enter)="saveScheduleField('checkOut.description')"
+                         (blur)="saveScheduleField('checkOut.description')"
+                         style="width: 100px"
+                         autofocus>
+                  <span class="edit-actions">
+                    <button (click)="saveScheduleField('checkOut.description')">
+                      <svg viewBox="0 0 24 24" width="14">
+                        <path stroke="currentColor" stroke-width="1.5" d="M5 13l4 4L19 7"/>
+                      </svg>
+                    </button>
+                    <button (click)="resetEditingState()">
+                      <svg viewBox="0 0 24 24" width="14">
+                        <path stroke="currentColor" stroke-width="1.5" d="M18 6L6 18M6 6l12 12"/>
+                      </svg>
+                    </button>
+                  </span>
+                </ng-template>
+              )</span>
+            </div>
+          </div>
+        </div>
+        
+        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title class-test" style="font-size: 25px; font-weight: 500; letter-spacing: 0px; text-transform: none;">
+          NORMAS DEL HOSTAL:
+        </h3>
+        <span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span>
+        <ul class="items-list">
+            <li *ngFor="let rule of hostelInfo?.rules; let i = index">
+              <span *ngIf="editingRuleIndex !== i; else editItem">
+                {{ rule }}
+                <span class="icon-actions" *ngIf="isLoggedIn">
+                  <svg class="icon" viewBox="0 0 24 24" (click)="startEditingRule(i, rule)">
+                    <path stroke="currentColor" stroke-width="1.5" d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4Z"/>
+                  </svg>
+                  <svg class="icon icon-delete" viewBox="0 0 24 24" (click)="deleteRule(i)">
+                    <path stroke="currentColor" stroke-width="1.5" d="M3 6h18m-2 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                  </svg>
+                </span>
+              </span>
+              <ng-template #editItem>
+                <div class="edit-container">
+                  <textarea [(ngModel)]="editingRuleValue" autofocus></textarea>
+                  <div class="edit-actions">
+                    <button (click)="updateRule(i)">
+                      <svg viewBox="0 0 24 24" width="16">
+                        <path stroke="currentColor" stroke-width="1.5" d="M5 13l4 4L19 7"/>
+                      </svg>
+                      <span>Guardar</span>
+                    </button>
+                    <button (click)="cancelRuleEdit()">
+                      <svg viewBox="0 0 24 24" width="16">
+                        <path stroke="currentColor" stroke-width="1.5" d="M18 6L6 18M6 6l12 12"/>
+                      </svg>
+                      <span>Cancelar</span>
+                    </button>
+                  </div>
+                </div>
+              </ng-template>
+            </li>
+          
+        
+        </ul>
+            <!-- Add new rule -->
+            <span *ngIf="isLoggedIn" class="add-item">
+                <button *ngIf="!isAddingNewRule" (click)="startAddingNewRule()" class="add-button">
+                  <svg viewBox="0 0 24 24" width="14">
+                    <path stroke="currentColor" stroke-width="1.5" d="M12 5v14M5 12h14"/>
+                  </svg>
+                  <span>Agregar regla</span>
+                </button>
+                <div *ngIf="isAddingNewRule" class="edit-container">
+                  <textarea [(ngModel)]="tempValue" placeholder="Nueva regla..." autofocus></textarea>
+                  <div class="edit-actions">
+                    <button (click)="saveNewRule()">
+                      <svg viewBox="0 0 24 24" width="16">
+                        <path stroke="currentColor" stroke-width="1.5" d="M5 13l4 4L19 7"/>
+                      </svg>
+                      <span>Guardar</span>
+                    </button>
+                    <button (click)="cancelAddingNewRule()">
+                      <svg viewBox="0 0 24 24" width="16">
+                        <path stroke="currentColor" stroke-width="1.5" d="M18 6L6 18M6 6l12 12"/>
+                      </svg>
+                      <span>Cancelar</span>
+                    </button>
+                  </div>
+                </div>
+              </span>
+        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title class-test" style="font-size: 25px; font-weight: 500; letter-spacing: 0px; text-transform: none;">
+          <br />
+          A tener en cuenta...
+          <br />
+          Condiciones adicionales
+        </h3>
+        <span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span>
+        <ul class="items-list">
+            <!-- Existing notes -->
+            <li *ngFor="let note of hostelInfo?.notes; let i = index">
+              <span *ngIf="editingNoteIndex !== i; else editItem">
+                {{ note }}
+                <span class="icon-actions" *ngIf="isLoggedIn">
+                  <svg class="icon" viewBox="0 0 24 24" (click)="startEditingNote(i, note)">
+                    <path stroke="currentColor" stroke-width="1.5" d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4Z"/>
+                  </svg>
+                  <svg class="icon icon-delete" viewBox="0 0 24 24" (click)="deleteNote(i)">
+                    <path stroke="currentColor" stroke-width="1.5" d="M3 6h18m-2 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                  </svg>
+                </span>
+              </span>
+              <ng-template #editItem>
+                <div class="edit-container">
+                  <textarea [(ngModel)]="tempValue" autofocus></textarea>
+                  <div class="edit-actions">
+                    <button (click)="updateNote(i)">
+                      <svg viewBox="0 0 24 24" width="16">
+                        <path stroke="currentColor" stroke-width="1.5" d="M5 13l4 4L19 7"/>
+                      </svg>
+                      <span>Guardar</span>
+                    </button>
+                    <button (click)="cancelNoteEdit()">
+                      <svg viewBox="0 0 24 24" width="16">
+                        <path stroke="currentColor" stroke-width="1.5" d="M18 6L6 18M6 6l12 12"/>
+                      </svg>
+                      <span>Cancelar</span>
+                    </button>
+                  </div>
+                </div>
+              </ng-template>
+            </li>
+            
+            <!-- Add new note -->
+          
+        </ul>
+        <span *ngIf="isLoggedIn" class="add-item">
+            <button *ngIf="!isAddingNewNote" (click)="startAddingNewNote()" class="add-button">
+              <svg viewBox="0 0 24 24" width="14">
+                <path stroke="currentColor" stroke-width="1.5" d="M12 5v14M5 12h14"/>
+              </svg>
+              <span>Agregar nota</span>
+            </button>
+            <div *ngIf="isAddingNewNote" class="edit-container">
+              <textarea [(ngModel)]="tempValue" placeholder="Nueva nota..." autofocus></textarea>
+              <div class="edit-actions">
+                <button (click)="saveNewNote()">
+                  <svg viewBox="0 0 24 24" width="16">
+                    <path stroke="currentColor" stroke-width="1.5" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  <span>Guardar</span>
+                </button>
+                <button (click)="cancelAddingNewNote()">
+                  <svg viewBox="0 0 24 24" width="16">
+                    <path stroke="currentColor" stroke-width="1.5" d="M18 6L6 18M6 6l12 12"/>
+                  </svg>
+                  <span>Cancelar</span>
+                </button>
+              </div>
+            </div>
+          </span>
+      </div>
+    </div>
+</div>

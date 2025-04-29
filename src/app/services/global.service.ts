@@ -12,7 +12,7 @@ import { HostelService } from './hostel.service';
 export class GlobalService {
   searchTerm: string = "";
   public _selectedRoom: Room | null = null;
-
+  currentRoomIndex: number = 0;
   // selectedRoom: Room | null = null;
   room: Room | null = null;
   activeRoute: string = "home";
