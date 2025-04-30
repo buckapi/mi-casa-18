@@ -374,3 +374,14 @@ input {
 .edit-controls button:hover svg {
   fill: #000;
 }
+/* Aumentar todos los iconos proporcionalmente */
+.icon {
+  transform: scale(1.5);
+  color: #fff; /* Aumenta un 25% */
+  transform-origin: center;
+}
+
+/* O específicamente para los de edición */
+.icon-edit {
+  transform: scale(1.3);
+}
