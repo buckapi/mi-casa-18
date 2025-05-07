@@ -13,30 +13,29 @@
                 </div>
             </div>
             <div class="hotale-mobile-menu-right">
-                
+                <a class="tourmaster-user-top-bar-login" 
+                data-tmlb="login" 
+                *ngIf="!authService.isAuthenticated()">
+                    <i class="icon_lock_alt"></i>
+                    <span class="tourmaster-text">Administrar</span>
+                </a>
                 <div class="hotale-mobile-menu">
                     <a class="hotale-mm-menu-button hotale-mobile-menu-button hotale-mobile-button-hamburger"
-                        href="index.html#hotale-mobile-menu"><span></span></a>
+                       (click)="toggleMobileMenu()"><span></span></a>
                     <div class="hotale-mm-menu-wrap hotale-navigation-font" id="hotale-mobile-menu" data-slide="right">
                         <ul id="menu-main-navigation" class="m-menu">
                             <li class="menu-item menu-item-home current-menu-item  menu-item-has-children">
-                                <a (click)="globalService.activeRoute = 'home' ; globalService.scrollToTop()" aria-current="page">Inicio</a>
-
+                                <a (click)="globalService.activeRoute = 'home' ; globalService.scrollToTop(); toggleMobileMenu()" aria-current="page">Inicio</a>
                             </li>
                             <li class="menu-item menu-item-has-children">
-                                <a (click)="globalService.activeRoute = 'about' ; globalService.scrollToTop()" *ngIf="!authService.isAuthenticated()">Mi Casa 18</a>
-
+                                <a (click)="globalService.activeRoute = 'about' ; globalService.scrollToTop(); toggleMobileMenu()" *ngIf="!authService.isAuthenticated()">Mi Casa 18</a>
                             </li>
                             <li class="menu-item menu-item-has-children">
-                                <a (click)="globalService.activeRoute = 'rooms' ; globalService.scrollToTop()" *ngIf="!authService.isAuthenticated()">Habitaciones</a>
-
+                                <a (click)="globalService.activeRoute = 'rooms' ; globalService.scrollToTop(); toggleMobileMenu()" *ngIf="!authService.isAuthenticated()">Habitaciones</a>
                             </li>
                             <li class="menu-item menu-item-has-children">
-    this.globalService.scrollToTop();
-                                <a (click)="globalService.activeRoute = 'contact'; globalService.scrollToTop()" *ngIf="!authService.isAuthenticated()">Contacto</a>
-
+                                <a (click)="globalService.activeRoute = 'contact'; globalService.scrollToTop(); toggleMobileMenu()" *ngIf="!authService.isAuthenticated()">Contacto</a>
                             </li>
-
                         </ul>
                     </div>
                 </div>
@@ -230,11 +229,11 @@
                                             style="color: #ffffff; width: 46px; height: 46px; line-height: 46px; background-color: #61c877; border-radius: 23px; -moz-border-radius: 23px; -webkit-border-radius: 23px;">
                                             <i class="fa fa-instagram"></i>
                                         </a>
-                                        <!-- <a href="https://www.tiktok.com/@mi.casa.18.sm" target="_blank"
+                                        <a href="https://www.tiktok.com/@mi.casa.18.sm" target="_blank"
                                             class="gdlr-core-social-network-icon" title="tiktok"
                                             style="color: #ffffff; width: 46px; height: 46px; line-height: 46px; background-color: #61c877; border-radius: 23px; -moz-border-radius: 23px; -webkit-border-radius: 23px;">
                                             <i class="fa fa-tiktok"></i>
-                                        </a> -->
+                                        </a>
 
                                     </span>
                                 </p>
@@ -252,5 +251,11 @@
                 </div>
             </div>
         </footer>
+    </div>
+     <!-- Add WhatsApp button -->
+     <div class="whatsapp-button">
+        <a href="https://wa.me/573007319612?text=Hola,%20visité%20micasa18.com%20y%20me%20gustaría%20obtener%20más%20información%20sobre%20el%20hospedaje%20en%20Mi%20Casa%2018" target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-whatsapp"></i>
+        </a>
     </div>
 </div>

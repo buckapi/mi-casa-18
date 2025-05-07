@@ -1,4 +1,4 @@
-.whatsapp-float {
+.whatsapp-button {
     position: fixed;
     width: 40px;
     height: 40px;
@@ -18,13 +18,13 @@
     transition: all 0.3s ease;
 }
 
-.whatsapp-float:hover {
+.whatsapp-button:hover {
     background-color: green;
     color: #FFF;
     transform: scale(1.1);
 }
 
-.whatsapp-float i {
+.whatsapp-button i {
     margin-top: 0;
 }
 
@@ -150,3 +150,24 @@
 .swal2-container .swal2-cancel.swal-cancel-button:hover {
   background-color: #f0f0f0 !important;
 }
+
+#hotale-mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 80%;
+  height: 100%;
+  background: white;
+  z-index: 1000;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+}
+
+#hotale-mobile-menu.active {
+  display: block;
+}
+
+.hotale-mobile-button-hamburger {
+  cursor: pointer;
+}
+

@@ -33,7 +33,10 @@ export class AppComponent implements OnInit {
   password: string = '';
   loading: boolean = false;
   errorMessage: string | null = null;
-
+  whatsappNumber: string = '573007319612';
+  isModalOpen = false;
+  isMobileMenuOpen = false;
+  
   constructor(
     public globalService: GlobalService,
     private scriptLoader: ScriptLoaderService,
@@ -45,6 +48,24 @@ export class AppComponent implements OnInit {
     this.setupLoginModal();
     this.checkUrlParams();
     this.checkAuthStatus();
+    // Add click event listener to close menu when clicking outside
+    document.addEventListener('click', (event: MouseEvent) => {
+      const menu = document.getElementById('hotale-mobile-menu');
+      const button = document.querySelector('.hotale-mobile-button-hamburger');
+      
+      if (this.isMobileMenuOpen && menu && button) {
+        const isClickInsideMenu = menu.contains(event.target as Node);
+        const isClickInsideButton = button.contains(event.target as Node);
+        
+        if (!isClickInsideMenu && !isClickInsideButton) {
+          this.toggleMobileMenu();
+        }
+      }
+    });
+  }
+  ngOnDestroy() {
+    // Remove event listener when component is destroyed
+    document.removeEventListener('click', () => {});
   }
 
   loadScripts() {
@@ -210,4 +231,39 @@ export class AppComponent implements OnInit {
     this.errorMessage = null;
     this.loading = false;
   }
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+    const menu = document.getElementById('hotale-mobile-menu');
+    if (menu) {
+      menu.style.display = this.isMobileMenuOpen ? 'block' : 'none';
+    }
+  }
+  
+  // En app.component.ts
+openLoginModal() {
+  const body = document.body;
+  body.classList.add('tourmaster-lightbox');
+  body.classList.add('tourmaster-lightbox-active');
+  const loginModal = document.querySelector('[data-tmlb-id="login"]');
+  if (loginModal) {
+    loginModal.classList.add('tourmaster-lightbox-active');
+  }
+}
+
+public closeModal() {
+  // Cerrar el modal
+  const closeButton = document.querySelector('.tourmaster-lightbox-close') as HTMLElement;
+  if (closeButton) {
+      closeButton.click();
+  }
+  
+  // Cerrar el menú móvil si está abierto
+  if (this.isMobileMenuOpen) {
+      this.toggleMobileMenu();
+  }
+}
+
+
+
+
 }
