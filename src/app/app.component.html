@@ -13,12 +13,63 @@
                 </div>
             </div>
             <div class="hotale-mobile-menu-right">
-                <a class="tourmaster-user-top-bar-login" 
-                data-tmlb="login" 
-                *ngIf="!authService.isAuthenticated()">
-                    <i class="icon_lock_alt"></i>
-                    <span class="tourmaster-text">Administrar</span>
-                </a>
+                
+                <div class="tourmaster-user-top-bar">
+                    <!-- Mostrar directamente el botón de cerrar sesión si está autenticado -->
+                    <div *ngIf="authService.isAuthenticated()" class="user-logged-in">
+                      <span class="tourmaster-user-top-bar-login" (click)="logout()">
+                        <i class="icon_lock-open_alt"></i>
+                        <span class="tourmaster-text">Cerrar Sesión</span>
+                      </span>
+                    </div>
+                    <div
+                    class="tourmaster-user-top-bar tourmaster-guest tourmaster-style-2"
+                    data-redirect="index.html"
+                    data-ajax-url="#"
+                >
+                    <!-- Mostrar botón de login y modal si no está autenticado -->
+                    <div *ngIf="!authService.isAuthenticated()">
+                      <span class="tourmaster-user-top-bar-login" data-tmlb="login">
+                        <i class="fas fa-lock"></i>
+                        <span class="tourmaster-text">Administrar</span>
+                      </span>
+                      
+                      <div class="tourmaster-lightbox-content-wrap" data-tmlb-id="login">
+                        <div class="tourmaster-lightbox-head">
+                          <h3 class="tourmaster-lightbox-title">Iniciar Sesión</h3>
+                          <i class="tourmaster-lightbox-close icon_close" (click)="closeLoginModal()"></i>
+                        </div>
+                        <div class="tourmaster-lightbox-content">
+                          <form (submit)="login($event)" class="tourmaster-login-form tourmaster-form-field tourmaster-with-border">
+                            <div class="tourmaster-login-form-fields clearfix">
+                              <p class="tourmaster-login-user">
+                                <label>Usuario</label>
+                                <input type="text" [(ngModel)]="username" name="username" required>
+                              </p>
+                              <p class="tourmaster-login-pass">
+                                <label>Contraseña</label>
+                                <input type="password" [(ngModel)]="password" name="password" required>
+                              </p>
+                            </div>
+                            
+                            <div *ngIf="errorMessage" class="tourmaster-error-message">
+                              {{ errorMessage }}
+                            </div>
+                            
+                            <!-- <p class="tourmaster-login-submit">
+                              <button type="submit" class="tourmaster-button" [disabled]="loading">
+                                {{ loading ? 'Iniciando...' : 'Ingresar' }}
+                              </button>
+                            </p> -->
+                            <p class="tourmaster-login-submit">
+                                <input (click)="login($event)" type="submit" name="wp-submit" class="tourmaster-button" value="{{ loading ? 'Iniciando...' : 'Ingresar' }}" />
+                            </p>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                  </div>
                 <div class="hotale-mobile-menu">
                     <a class="hotale-mm-menu-button hotale-mobile-menu-button hotale-mobile-button-hamburger"
                        (click)="toggleMobileMenu()"><span></span></a>
@@ -93,7 +144,7 @@
                                 <a id="tourmaster-room-navigation-checkout-button"
                                     class="tourmaster-room-navigation-checkout-button"
                                     data-label="Book Now" (click)="globalService.activeRoute = 'rooms'" style="cursor: pointer;">
-                                    Reservar<span class="tourmaster-count">0</span>
+                                    Reservar<span class="tourmaster-count"></span>
                                 </a>
                             </div>
                             <div class="tourmaster-user-top-bar">
