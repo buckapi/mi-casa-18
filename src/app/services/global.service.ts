@@ -6,6 +6,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { CONTACT_INFO } from '../constants/hostel.constants';
 import { Observable,Subject } from 'rxjs';
 import { HostelService } from './hostel.service';
+import PocketBase from 'pocketbase';
 @Injectable({
   providedIn: 'root'
 })
@@ -24,6 +25,7 @@ export class GlobalService {
   isModalOpen = false;
   rooms$: Observable<Room[]>;
   rooms: Room[] = []; 
+  pb: PocketBase;
   roomChanged = new Subject<void>(); // Subject para notificar cambios
   get selectedRoom(): Room | null {
     return this._selectedRoom;
@@ -36,7 +38,7 @@ export class GlobalService {
   constructor(
     private sanitizer: DomSanitizer,
     public hostelService: HostelService,
-    public realtimeRoomsService: RealtimeRoomsService
+    public realtimeRoomsService: RealtimeRoomsService,
   ) {
     this.rooms$ = this.realtimeRoomsService.roomsSubject.asObservable();
     this.rooms$.subscribe(rooms => {
@@ -46,6 +48,7 @@ export class GlobalService {
       this.rooms = rooms;
     });
     console.log('habitaciones', this.rooms);
+    this.pb = new PocketBase('https://db.buckapi.lat:8045');
   }
 
   getWhatsappUrl(room?: Room): SafeUrl {

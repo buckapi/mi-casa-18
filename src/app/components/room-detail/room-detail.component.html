@@ -28,31 +28,71 @@
                                             <img [src]="img" (click)="openLightbox(i)">
                                           </div> -->
                                 <!-- En tu template (room-detail.component.html) -->
-   <!-- Sección Principal de Imagen -->
-   <div class="image-section">
-    <div class="image-container" 
-         *ngIf="globalService.selectedRoom && globalService.selectedRoom.images?.length"
-         (click)="openLightbox(0)"
-         role="button"
-         tabindex="0"
-         style="cursor: pointer;">
-      <img [src]="globalService.selectedRoom.images[0] || 'assets/images/default-room.jpg'"
-           alt="Imagen de la habitación"
-           class="responsive-image"/>
-    </div>
-    
-    <!-- Miniaturas opcionales -->
-    <div class="image-thumbnails" *ngIf="globalService.selectedRoom && globalService.selectedRoom.images.length > 1">
-      <div *ngFor="let img of globalService.selectedRoom.images; let i = index" 
-           class="thumbnail" 
-           (click)="openLightbox(i)">
-        <img [src]="img" alt="Miniatura {{i+1}}">
-      </div>
-    </div>
-  </div>
+                                        <!-- Sección Principal de Imagen -->
+                                        <div class="image-section">
+                                            <div class="image-container" 
+                                                *ngIf="globalService.selectedRoom && globalService.selectedRoom.images?.length"
+                                                (click)="openLightbox(0)"
+                                                role="button"
+                                                tabindex="0"
+                                                style="cursor: pointer;">
+                                            <img [src]="globalService.selectedRoom.images[0] || 'assets/images/default-room.jpg'"
+                                                alt="Imagen de la habitación"
+                                                class="responsive-image"/>
+                                            </div>
+                                            
+                                            <!-- Miniaturas opcionales -->
+                                            <div class="image-thumbnails" *ngIf="globalService.selectedRoom && globalService.selectedRoom.images.length > 1">
+                                            <div *ngFor="let img of globalService.selectedRoom.images; let i = index" 
+                                                class="thumbnail" 
+                                                (click)="openLightbox(i)">
+                                                <img [src]="img" alt="Miniatura {{i+1}}">
+                                            </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="clearfix">
+                            <h3>Cargador de Imágenes de la habitación</h3>
+                            <div class="custom-file-upload">
+                                <div *ngIf="selectedImage" class="image-preview">
+                                    <img [src]="selectedImagePrev" alt="Imagen seleccionada" class="img-thumbnail"
+                                        style="border-radius: 10%; cursor: pointer; border: 5px solid #3ba5a8; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); transition: box-shadow 0.3s ease, transform 0.3s ease; max-width: 150px; max-height: 150px;" />
+                                </div>
+                                <input #imageUpload id="imageUpload" type="file" (change)="onImageChange($event)" class="form-control"
+                                        accept="image/*" style="display: none;" />
+                                <label for="imageUpload" class="btn mb-2 me-2 btn-primary">
+                                    <i class="fa fa-search me-2"></i>Seleccionar imagen
+                                </label>
+                                <button class="btn btn-success ms-2" (click)="addImage()" [disabled]="!selectedImage">
+                                    <i class="fa fa-check me-2"></i>Agregar imagen
+                                </button>
+                                <div *ngIf="!selectedImage" class="text-danger">* Por favor, seleccione una imagen.</div>
+                            </div>
+                            
+                            
+                            <br>
+                            <div *ngIf="globalService.selectedRoom && globalService.selectedRoom.images?.length" class="images-container">
+                                <div class="image-item" *ngFor="let img of globalService.selectedRoom?.images; let i = index">
+                                    <div class="image-wrapper">
+                                        <img [src]="img" 
+                                             alt="Imagen de la habitación" 
+                                             class="img-thumbnail" 
+                                             style="border-radius: 10px; cursor: pointer; border: 5px solid #3ba5a8; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); transition: box-shadow 0.3s ease, transform 0.3s ease; max-width: 100%;" 
+                                             (click)="openLightbox(i)" />
+                                        <button class="delete-button" 
+                                                (click)="confirmDelete(i, $event)">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </div>
+                                    <div class="image-info">
+                                        <span class="image-index">Imagen {{i + 1}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
                         </div>
                         <div class="gdlr-core-pbf-column gdlr-core-column-60 gdlr-core-column-first" id="gdlr-core-column-1">
                             <div class="gdlr-core-pbf-column-content-margin gdlr-core-js" style="margin: 0px 0px 0px 0px; padding: 10px 0px 20px 0px;">

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { GlobalService } from '../../services/global.service';
 import { CommonModule } from '@angular/common';
 import { Room } from '../../interfaces/hostel.interface';
@@ -8,9 +8,10 @@ import { LightboxModule } from 'ngx-lightbox';
 import { Subscription } from 'rxjs';
 import { HostelService } from '../../services/hostel.service';
 import { AuthService } from '../../services/auth.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { AdditionalInfoComponent } from '../additional-info/additional-info.component';
+import Compressor from 'compressorjs';
 
 @Component({
   selector: 'app-room-detail',
@@ -21,13 +22,15 @@ import { AdditionalInfoComponent } from '../additional-info/additional-info.comp
   styleUrl: './room-detail.component.css'
 })
 export class RoomDetailComponent implements OnInit, OnDestroy {
+  @ViewChild('imageUpload') imageUpload: ElementRef;
 
 editingRuleValue: string = '';
   hostelInfo: any;
   isAddingNewRule = false;
-
+  updateForm: FormGroup;
   isLoggedIn = false;
-  
+  selectedImage: File | null = null;
+  selectedImagePrev: string = '';
   editingField: string | null = null;
   tempValue: any;
   currentRoomId: string = '';
@@ -46,8 +49,278 @@ editingRuleValue: string = '';
       this.isLoggedIn = this.authService.isAuthenticated();
       this.currentRoomId = this.globalService.selectedRoom?.id || '';
       this.loadHostelInfo();
+      this.updateForm = new FormGroup({
+        name: new FormControl('', Validators.required),
+        description: new FormControl('', Validators.required),
+        price: new FormControl('', Validators.required),
+        image: new FormControl('', Validators.required),
+      });
+      this.imageUpload = new ElementRef('imageUpload');
   }
-   // ... código existente ...
+  async deleteImage(index: number, event: MouseEvent) {
+    event.stopPropagation(); // Evitar que el click se propague al contenedor
+    if (!this.globalService.selectedRoom) return;
+
+    try {
+        // Primero eliminamos la imagen del servidor
+        const imageId = this.globalService.selectedRoom.images[index];
+        await this.globalService.pb.collection('hostel_files').delete(imageId);
+
+        // Luego actualizamos el array local
+        this.globalService.selectedRoom.images.splice(index, 1);
+
+        // Si eliminamos la imagen principal, actualizamos la vista
+        if (index === 0 && this.globalService.selectedRoom.images.length > 0) {
+            this.globalService.selectedRoom.images[0] = this.globalService.selectedRoom.images[0];
+        }
+
+        Swal.fire({
+            title: '¡Éxito!',
+            text: 'Imagen eliminada con éxito.',
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+        });
+    } catch (error) {
+        console.error('Error al eliminar la imagen:', error);
+        Swal.fire({
+            title: 'Error',
+            text: 'Ocurrió un error al eliminar la imagen.',
+            icon: 'error',
+            confirmButtonText: 'Aceptar'
+        });
+    }
+}
+onImageChange(event: any): void {
+  const file = event.target.files[0];
+  if (file) {
+      this.selectedImage = file;
+
+      // Crear vista previa
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+          this.selectedImagePrev = e.target.result;
+      };
+      reader.readAsDataURL(file);
+  }
+}
+
+async addImage() {
+  if (!this.selectedImage) {
+      Swal.fire({
+          title: 'Error!',
+          text: 'Por favor, seleccione una imagen antes de continuar.',
+          icon: 'error',
+          confirmButtonText: 'Aceptar'
+      });
+      return;
+  }
+
+  if (!this.globalService.selectedRoom) {
+      Swal.fire({
+          title: 'Error!',
+          text: 'No hay una habitación seleccionada.',
+          icon: 'error',
+          confirmButtonText: 'Aceptar'
+      });
+      return;
+  }
+
+  try {
+      const roomId = this.globalService.selectedRoom.id;
+      if (!roomId) {
+          throw new Error('No se encontró el ID de la habitación');
+      }
+
+      new Compressor(this.selectedImage, {
+          quality: 0.6,
+          maxWidth: 800,
+          maxHeight: 800,
+          success: async (compressedFile: Blob) => {
+              try {
+                  const formData = new FormData();
+                  formData.append('image', compressedFile, this.selectedImage?.name);
+
+                  const result = await this.globalService.pb.collection('hostel_files').create(formData);
+                  
+                  if (result && this.globalService.selectedRoom) {
+                      const imageField = result['image'] ? 'image' : 'file';
+                      const imageUrl = `${this.globalService.pb.baseUrl}/api/files/${result.collectionId}/${result.id}/${result[imageField]}`;
+
+                      // Inicializar el array si no existe
+                      if (!this.globalService.selectedRoom.images) {
+                          this.globalService.selectedRoom.images = [];
+                      }
+                      
+                      // Agregar la nueva imagen
+                      this.globalService.selectedRoom.images.push(imageUrl);
+
+                      // Actualizar el registro
+                      await this.globalService.pb.collection('rooms').update(roomId, {
+                          images: this.globalService.selectedRoom.images
+                      });
+
+                      // Limpiar selección
+                      this.selectedImage = null;
+                      this.selectedImagePrev = '';
+                      if (this.imageUpload?.nativeElement) {
+                          this.imageUpload.nativeElement.value = '';
+                      }
+
+                      Swal.fire({
+                          title: '¡Éxito!',
+                          text: 'Imagen agregada con éxito.',
+                          icon: 'success',
+                          confirmButtonText: 'Aceptar'
+                      });
+                  }
+              } catch (error) {
+                  console.error('Error al procesar la imagen:', error);
+                  Swal.fire({
+                      title: 'Error',
+                      text: 'Ocurrió un error al procesar la imagen.',
+                      icon: 'error',
+                      confirmButtonText: 'Aceptar'
+                  });
+              }
+          },
+          error: (err: any) => {
+              console.error('Error al comprimir la imagen', err);
+              Swal.fire({
+                  title: 'Error',
+                  text: 'Ocurrió un error al comprimir la imagen.',
+                  icon: 'error',
+                  confirmButtonText: 'Aceptar'
+              });
+          }
+      });
+  } catch (error) {
+      console.error('Error al agregar la imagen:', error);
+      Swal.fire({
+          title: 'Error',
+          text: (error as Error).message || 'Ocurrió un error al agregar la imagen.',
+          icon: 'error',
+          confirmButtonText: 'Aceptar'
+      });
+  }
+}
+
+async updateImage() {
+  if (!this.selectedImage) {
+      Swal.fire({
+          title: 'Error!',
+          text: 'Por favor, seleccione una imagen antes de continuar.',
+          icon: 'error',
+          confirmButtonText: 'Aceptar'
+      });
+      return;
+  }
+
+  if (!this.globalService.selectedRoom) {
+      Swal.fire({
+          title: 'Error!',
+          text: 'No hay una habitación seleccionada.',
+          icon: 'error',
+          confirmButtonText: 'Aceptar'
+      });
+      return;
+  }
+
+  try {
+      const formData = new FormData();
+      formData.append('image', this.selectedImage);
+
+      const record = await this.globalService.pb.collection('hostel_files').update(this.currentRoomId, formData);
+
+      if (record && this.globalService.selectedRoom) {
+          const imageField = record['image'] ? 'image' : 'file';
+          const imageUrl = `${this.globalService.pb.baseUrl}/api/files/${record.collectionId}/${record.id}/${record[imageField]}`;
+          
+          this.globalService.selectedRoom.images = [imageUrl];
+
+          this.selectedImage = null;
+          this.selectedImagePrev = '';
+          if (this.imageUpload?.nativeElement) {
+              this.imageUpload.nativeElement.value = '';
+          }
+
+          Swal.fire({
+              title: '¡Éxito!',
+              text: 'Imagen actualizada con éxito.',
+              icon: 'success',
+              confirmButtonText: 'Aceptar'
+          });
+      }
+  } catch (error) {
+      console.error('Error al actualizar la imagen:', error);
+      Swal.fire({
+          title: 'Error',
+          text: 'Ocurrió un error al actualizar la imagen.',
+          icon: 'error',
+          confirmButtonText: 'Aceptar'
+      });
+  }
+}
+
+
+  async confirmDelete(index: number, event: MouseEvent) {
+    event.stopPropagation();
+    if (!this.globalService.selectedRoom) return;
+
+    const result = await Swal.fire({
+        title: '¿Estás seguro?',
+        text: "Esta acción eliminará la imagen permanentemente.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+    });
+
+    if (result.isConfirmed) {
+        try {
+            // Mostrar información de depuración
+            console.log('ID de la habitación:', this.globalService.selectedRoom.id);
+            console.log('Imágenes actuales:', this.globalService.selectedRoom.images);
+
+            // Eliminamos la imagen del array local
+            this.globalService.selectedRoom.images.splice(index, 1);
+
+            // Si eliminamos la imagen principal, actualizamos la vista
+            if (index === 0 && this.globalService.selectedRoom.images.length > 0) {
+                this.globalService.selectedRoom.images[0] = this.globalService.selectedRoom.images[0];
+            }
+
+            // Actualizar el registro de la habitación
+            const roomId = this.globalService.selectedRoom.id;
+            const updatedRoom = await this.globalService.pb.collection('rooms').update(roomId as string, {
+                images: this.globalService.selectedRoom.images
+            });
+
+            console.log('Respuesta del servidor:', updatedRoom);
+
+            Swal.fire({
+                title: '¡Éxito!',
+                text: 'Imagen eliminada con éxito.',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            });
+        } catch (error) {
+            console.error('Error al eliminar la imagen:', error);
+            console.error('Error details:', {
+                roomId: this.globalService.selectedRoom?.id,
+                images: this.globalService.selectedRoom?.images,
+                currentRoomId: this.currentRoomId
+            });
+            Swal.fire({
+                title: 'Error',
+                text: 'Ocurrió un error al eliminar la imagen.',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            });
+        }
+    }
+}
 
    navigateRoom(direction: 'prev' | 'next') {
     const currentIndex = this.globalService.currentRoomIndex;
@@ -160,8 +433,7 @@ editingRuleValue: string = '';
       thumb: 'assets/images/default-room.jpg'
     }];
   }
-
-
+ 
   openLightbox(index: number = 0): void {
     if (this._albums.length > 0 && index < this._albums.length) {
       this._lightbox.open(this._albums, index, {
