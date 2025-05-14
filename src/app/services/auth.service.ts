@@ -48,6 +48,10 @@ export class AuthService {
       };
     }
   }
+  isAdministrator(): boolean {
+    const user = this.getUser();
+    return user?.role === 'admin'; // Ajustar según el campo que uses para identificar administradores
+  }
 
   private saveAuthData(token: string, model: any) {
     localStorage.setItem(this.AUTH_KEY, JSON.stringify({

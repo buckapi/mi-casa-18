@@ -43,7 +43,7 @@ editingRuleValue: string = '';
   private roomSubscription: Subscription = Subscription.EMPTY;
   constructor(
     private _lightbox: Lightbox,
-    private authService: AuthService,
+    public authService: AuthService,
     private hostelService: HostelService,
     public globalService: GlobalService) {
       this.isLoggedIn = this.authService.isAuthenticated();

@@ -54,7 +54,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="clearfix">
+                        <div class="clearfix" *ngIf="authService.isAuthenticated()">
                             <h3>Cargador de Imágenes de la habitación</h3>
                             <div class="custom-file-upload">
                                 <div *ngIf="selectedImage" class="image-preview">
