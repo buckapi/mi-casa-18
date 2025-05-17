@@ -152,25 +152,33 @@
                         id="tourmaster-enquiry-form"
                         data-action="tourmaster_room_send_enquiry_form"
                         data-validate-error="Please fill all required fields."
+                        (submit)="onSubmit($event)"
                     >
                         <div class="tourmaster-enquiry-field tourmaster-enquiry-field-full-name tourmaster-type-text clearfix">
-                            <div class="tourmaster-head">Full Name<span class="tourmaster-req">*</span></div>
-                            <div class="tourmaster-tail clearfix"><input type="text" name="full-name" value="" data-required /></div>
+                            <div class="tourmaster-head">Nombre<span class="tourmaster-req">*</span></div>
+                            <div class="tourmaster-tail clearfix">
+                                <input type="text" name="full-name" value="" data-required />
+                            </div>
                         </div>
                         <div class="tourmaster-enquiry-field tourmaster-enquiry-field-email-address tourmaster-type-text clearfix">
-                            <div class="tourmaster-head">Email Address<span class="tourmaster-req">*</span></div>
-                            <div class="tourmaster-tail clearfix"><input type="text" name="email-address" value="" data-required /></div>
+                            <div class="tourmaster-head">Email <span class="tourmaster-req">*</span></div>
+                            <div class="tourmaster-tail clearfix">
+                                <input type="text" name="email-address" value="" data-required />
+                            </div>
                         </div>
                         <div class="tourmaster-enquiry-field tourmaster-enquiry-field-your-enquiry tourmaster-type-textarea clearfix">
-                            <div class="tourmaster-head">Your Enquiry<span class="tourmaster-req">*</span></div>
-                            <div class="tourmaster-tail clearfix"><textarea name="your-enquiry" data-required></textarea></div>
+                            <div class="tourmaster-head">Tu consulta<span class="tourmaster-req">*</span></div>
+                            <div class="tourmaster-tail clearfix">
+                                <textarea name="your-enquiry" data-required></textarea>
+                            </div>
                         </div>
                         <div class="tourmaster-enquiry-term">
-                            <input type="checkbox" name="tourmaster-require-acceptance" />* I agree with <a href="single-room.html#" target="_blank">Terms of Service</a> and <a href="single-room.html#" target="_blank">Privacy Statement</a>.
-                            <div class="tourmaster-enquiry-term-message tourmaster-enquiry-form-message tourmaster-failed">Please agree to all the terms and conditions before proceeding to the next step</div>
+                            <input type="checkbox" name="tourmaster-require-acceptance" />* Acepto <a href="single-room.html#" target="_blank">Los Términos </a> y <a href="single-room.html#" target="_blank">las Condiciones de Privacidad</a>.
+                            <div class="tourmaster-enquiry-term-message tourmaster-enquiry-form-message tourmaster-failed">Por favor, acepta todos los términos y condiciones antes de continuar</div>
                         </div>
                         <div class="tourmaster-enquiry-form-message"></div>
-                        <input type="hidden" name="room-id" value="15031" /><input type="submit" class="tourmaster-room-button tourmaster-full" value="Submit Enquiry" />
+                        <input type="hidden" name="room-id" value="15031" />
+                        <input type="submit" class="tourmaster-room-button tourmaster-full" value="Enviar consulta" />
                     </form>
                 </div>
             </div>
@@ -182,18 +190,25 @@
                         id="tourmaster-enquiry-form"
                         data-action="tourmaster_room_send_enquiry_form"
                         data-validate-error="Please fill all required fields."
+                        (submit)="onSubmit($event)"
                     >
                         <div class="tourmaster-enquiry-field tourmaster-enquiry-field-full-name tourmaster-type-text clearfix">
                             <div class="tourmaster-head">Nombre<span class="tourmaster-req">*</span></div>
-                            <div class="tourmaster-tail clearfix"><input type="text" name="full-name" value="" data-required /></div>
+                            <div class="tourmaster-tail clearfix">
+                                <input type="text" name="full-name" value="" data-required />
+                            </div>
                         </div>
                         <div class="tourmaster-enquiry-field tourmaster-enquiry-field-email-address tourmaster-type-text clearfix">
                             <div class="tourmaster-head">Email <span class="tourmaster-req">*</span></div>
-                            <div class="tourmaster-tail clearfix"><input type="text" name="email-address" value="" data-required /></div>
+                            <div class="tourmaster-tail clearfix">
+                                <input type="text" name="email-address" value="" data-required />
+                            </div>
                         </div>
                         <div class="tourmaster-enquiry-field tourmaster-enquiry-field-your-enquiry tourmaster-type-textarea clearfix">
                             <div class="tourmaster-head">Tu consulta<span class="tourmaster-req">*</span></div>
-                            <div class="tourmaster-tail clearfix"><textarea name="your-enquiry" data-required></textarea></div>
+                            <div class="tourmaster-tail clearfix">
+                                <textarea name="your-enquiry" data-required></textarea>
+                            </div>
                         </div>
                         <div class="tourmaster-enquiry-term">
                             <input type="checkbox" name="tourmaster-require-acceptance" />* Acepto <a href="single-room.html#" target="_blank">Los Términos </a> y <a href="single-room.html#" target="_blank">las Condiciones de Privacidad</a>.
