@@ -7,9 +7,9 @@
                     <form
                         class="tourmaster-room-booking-form clearfix"
                         id="tourmaster-room-booking-form"
-                        action="single-room.html#"
                         data-action="tourmaster_room_booking_form"
                         method="POST"
+                        (submit)="onSubmitBooking($event)"
                     >
                         <div
                             class="tourmaster-room-date-selection tourmaster-vertical"
@@ -39,7 +39,7 @@
                                     <div class="tourmaster-head gdlr-core-skin-e-content">
                                         <span>Room<span class="tourmaster-number">1</span> : </span>Huespedes
                                     </div>
-                                    <div class="tourmaster-tail gdlr-core-skin-e-content"><span class="tourmaster-space"></span>Adults 2<span class="tourmaster-space"></span>Children 0</div>
+                                    <div class="tourmaster-tail gdlr-core-skin-e-content"><span class="tourmaster-space"></span>Adultos 2<span class="tourmaster-space"></span>Niños 0</div>
                                 </div>
                                 <div class="tourmaster-custom-amount-selection-wrap">
                                     <div class="tourmaster-custom-amount-selection-item clearfix" data-label="Adults">
@@ -80,9 +80,9 @@
                     <form
                         class="tourmaster-room-booking-form clearfix"
                         id="tourmaster-room-booking-form"
-                        action="single-room.html#"
                         data-action="tourmaster_room_booking_form"
                         method="POST"
+                        (submit)="onSubmitBooking($event)"
                     >
                         <div
                             class="tourmaster-room-date-selection tourmaster-vertical"
@@ -112,7 +112,7 @@
                                     <div class="tourmaster-head gdlr-core-skin-e-content">
                                         <span>Room<span class="tourmaster-number">1</span> : </span>Huespedes
                                     </div>
-                                    <div class="tourmaster-tail gdlr-core-skin-e-content"><span class="tourmaster-space"></span>Adults 2<span class="tourmaster-space"></span>Children 0</div>
+                                    <div class="tourmaster-tail gdlr-core-skin-e-content"><span class="tourmaster-space"></span>Adultos 2<span class="tourmaster-space"></span>Niños 0</div>
                                 </div>
                                 <div class="tourmaster-custom-amount-selection-wrap">
                                     <div class="tourmaster-custom-amount-selection-item clearfix" data-label="Adults">
@@ -137,7 +137,7 @@
                                             <span class="tourmaster-minus"><i class="icon_minus-06"></i></span><span class="tourmaster-amount">0</span>
                                             <span class="tourmaster-plus"><i class="icon_plus"></i></span>
                                         </div>
-                                        <input type="hidden" name="children[]" value="0" />
+                                        <input type="hidden" name="pet[]" value="0" />
                                     </div>
                                 </div>
                             </div>
