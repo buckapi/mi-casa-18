@@ -75,7 +75,7 @@ export class ContactComponent implements OnInit, OnDestroy {
     const form = event.target as HTMLFormElement;
     const formData = new FormData(form);
     
-    const message = `Nuevo mensaje de contacto:\n\n` +
+    const message = `Nuevo mensaje de contacto desde www.micasa18.com:\n\n` +
                     `Nombre: ${formData.get('Name')}\n` +
                     `Ciudad: ${formData.get('City')}\n` +
                     `Email: ${formData.get('Email')}\n` +
